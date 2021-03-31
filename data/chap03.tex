@@ -27,8 +27,6 @@ Next step is to represent IoT devices data in virtual reality and perform comput
 \section{Visualization layer}
 Since the platform purpose is to provide an API for research on IoT devices in VR, we decided to use Unity for interaction with virtual reality devices. First of all, by choosing Unity, we save time from developing our own 3D engine. Secondly, we can build the project for most of platforms and provide support for VR headsets. And thirdly, developers are already familiar with Unity development, and can integrate their research projects into the platform faster than if we used our own 3D engine.
 
-This is an example of an appendix image: (Figure~\ref{fig:BasicPlatformStructure-figure})
-
 \begin{figure}
   \centering
   \includegraphics[width=0.6\linewidth]{figures/BasicPlatformStructure.png}
@@ -51,7 +49,19 @@ Items represent capabilities that can be used by applications, either in user in
 
 The glue between Things and Items are Links. A Link is an association between exactly one Channel and one Item. If a Channel is linked to an Item, it is "enabled", which means that the capability the Item represents is accessible through that Channel. Channels may be linked to multiple Items and Items may be linked to multiple Channels.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/openHABServerStructure.png}
+  \caption{Simplified structure of NUIX Studio. Real-world IoT devices HUB is openHAB server, while NUIX-Studio server is the main instance of NUIX-Studio APP responsible for the computations.}
+  \label{fig:openHABServerStructure-figure}
+\end{figure}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/ExtendedServerStructure.png}
+  \caption{Simplified structure of NUIX Studio. Real-world IoT devices HUB is openHAB server, while NUIX-Studio server is the main instance of NUIX-Studio APP responsible for the computations.}
+  \label{fig:ExtendedServerStructure-figure}
+\end{figure}
 
 \section{Symbols}
 
