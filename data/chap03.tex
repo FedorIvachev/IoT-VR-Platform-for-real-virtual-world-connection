@@ -59,9 +59,31 @@ The glue between Things and Items are Links. A Link is an association between ex
 \begin{figure}
   \centering
   \includegraphics[width=0.9\linewidth]{figures/ExtendedServerStructure.png}
-  \caption{Simplified structure of NUIX Studio. Real-world IoT devices HUB is openHAB server, while NUIX-Studio server is the main instance of NUIX-Studio APP responsible for the computations.}
+  \caption{Structure of the server showing how the NUIX-Studio APP is connected to it.}
   \label{fig:ExtendedServerStructure-figure}
 \end{figure}
+
+\begin{table}
+  \centering
+  \begin{threeparttable}[c]
+    \caption{REST API commands used in NUIX-Studio}
+    \label{tab:three-part-table}
+    \begin{tabular}{ll}
+      \toprule
+      REST API CALL    &         DESCRIPTION                 \\
+      \midrule
+      GET\tnote{a} & Get all available items \\
+      POST\tnote{b} & Adds a new item to the registry or updates the existing item    \\
+      PUT        & Sends a command to the item                              \\
+      DELETE        & Removes an item from the registry          \\
+      \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+      \item [a] Description of note a,
+      \item [b] Description of note b.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
 
 \section{Symbols}
 
