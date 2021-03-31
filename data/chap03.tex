@@ -56,12 +56,31 @@ The glue between Things and Items are Links. A Link is an association between ex
   \label{fig:openHABServerStructure-figure}
 \end{figure}
 
+Overall, the structure may seem a bit difficult for understanding, and that’s why we will focus on only the basic parts in this document:
+In our example each of the items is linked only to one channel, and each of the channels is linked to only one item. 
+
+Assume that we installed a binding for Xiaomi smart home devices. The smart home devices we can access have been automatically discovered by our server and added as Things. In our example we are using Xiaomi Lamp, for which several Channels are presented:
+
+Each of these channels represents one item. 
+
+For example, the Power Control is performed through power channel. The power control, in terms of the concepts we introduced, is an item with name MiLEDSmartBulbWhiteandColorPower of type Switch and State “OFF”.
+
+As soon as we turn on the lamp, the power control switch in Web Interface will also turn ON. And if we put the switch to the “OFF” state in the Web Interface, the lamp will turn off.
+
+To support Fault Tolerance, our openHAB server stores data over time.
+
+\subsection{Server Extended Structure}
+
+In the previous paragraph we didn’t specify how our platform should perform access to the server data. 
+
 \begin{figure}
   \centering
   \includegraphics[width=0.9\linewidth]{figures/ExtendedServerStructure.png}
   \caption{Structure of the server showing how the NUIX-Studio APP is connected to it.}
   \label{fig:ExtendedServerStructure-figure}
 \end{figure}
+
+As seen in Table~\ref{tab:three-part-table}, syncing is performed through REST API, which is explained in details further.
 
 \begin{table}
   \centering
@@ -74,16 +93,79 @@ The glue between Things and Items are Links. A Link is an association between ex
       \midrule
       GET\tnote{a} & Get all available items \\
       POST\tnote{b} & Adds a new item to the registry or updates the existing item    \\
-      PUT        & Sends a command to the item                              \\
-      DELETE        & Removes an item from the registry          \\
+      PUT\tnote{b}        & Sends a command to the item                              \\
+      DELETE\tnote{b}        & Removes an item from the registry          \\
       \bottomrule
     \end{tabular}
     \begin{tablenotes}
-      \item [a] Description of note a,
-      \item [b] Description of note b.
+      \item [a] For link: /items
+      \item [b] For link: /items/<itemname>
     \end{tablenotes}
   \end{threeparttable}
 \end{table}
+
+In the current implementation of the platform, 4 different REST API commands are used: GET command for receiving the items in the registry on system startup, PUT command to create a new item on the server, POST command for updating the state of the item, and DELETE command for removing an item from the server.
+
+Receiving the states of the items from the server is performed through getting the events from the server: once the event is received, the item state can be retrieved from payload.
+
+\section{NUIX-Studio APP}
+
+As mentioned above, there can be several NUIX-Studio APP instances running at the same time. Each of them has access and performs syncing to the Server through REST API. The instances can be of one of three types:
+
+\begin{enumerate}
+    \item Virtual Reality Instance. Runs on Oculus or another VR headset, has remote or local access to the server. Items received from the server are visualized and it is possible to interact with them using different techniques such as touching buttons, moving sliders, performing gestures using hand recognition, using voice commands etc. 
+    \item Computations Instance. Runs on a powerful machine and has either remote or local access to the server. Since latency is important for our platform, it is more preferable to run this instance on the same machine as openHAB. In this case the REST API calls time will be less than minimum measurement unit (compared to milliseconds for accessing remote virtual reality instances). Physics, big data analysis and other performance-based computations are performed on this instance, while interactions are limited.
+    \item Input simulation instance. If the APP instance is running on the device with limited support of interaction interfaces (for example, a PC), input simulation can be used. Sometimes, it is even easier to run and test the platform on such devices: for example, if using a physical keyboard is needed, or when there is no access for VR headset at the moment.
+\end{enumerate}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/AppInstances.png}
+  \caption{NUIX-Studio App Instances}
+  \label{fig:AppInstances-figure}
+\end{figure}
+
+Each of the instances performs access to the same data on the server, which makes it possible to work simultaneously in one virtual environment, as well as divide tasks between different instances: as mentioned above, one of the instances can be used for computations, while the other instances for interacting with the devices in virtual reality.
+
+\subsection{NUIX-Studio App Architecture}
+
+When the NUIX-Studio APP requests the access to the system to get the list of items from the registry, a list of Item Data Transfer Objects is received by the app and then added into Semantic Model. When the state of the item is updated, or if a new item is added or removed, an event is sent to the EventController instance, and then, based on the event payload, the item list in updated.  By keeping each item’s data equal to the server, the semantic model in NUIX-Studio APP is equivalent to the semantic model presented on the server. 
+
+But only keeping the states of the items in the APP does not allow us to interact with the items. In other words, NUIX-Studio App has to provide an interface to interact with the items. Since different types of items require different interaction techniques, for each item type a widget is created.
+Widget in NUIX-Studio APP is a Unity Virtual GameObject, which can visualize the item state and update it. For example, it can be an interactable pinch slider for a dimmer item, or a virtual screen  for an image item.
+
+By integrating Extra packages, NUIX-Studio platform can provide a bigger variety of widgets, as well as higher number of supported devices. For example, Oculus Integration support provides an API for hands recognition, while Steam VR support makes it possible to run the NUIX-Studio APP on the majority of VR headsets.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/AppArchitecture.png}
+  \caption{NUIX-Studio App Architecture}
+  \label{fig:AppArchitecture-figure}
+\end{figure}
+
+\subsection{NUIX-Studio APP Semantic Model}
+
+As mentioned above, the semantic model in the NUIX-Studio App is kept equivalent to the semantic model stored on the server. The advantages of this approach are:
+
+\begin{enumerate}
+    \item Each of the APP instances visualizes equivalent data, which leads to support of simultaneous and fault-tolerance work;
+    \item The semantic model on the server is time and memory effective, and it is better to develop the platform based on such model;
+    \item It is more effective solution for using third-party frameworks. Since openHAB is a flexible popular open-source software for IoT systems, in the future, if more functionality is going to used with openHAB, our solution will still be working.
+\end{enumerate}
+
+Overall, by using the defined approach, the platform follows Dependency-inversion principle "depend upon abstractions, [not] concretions." In this case, Semantic Model is an abstraction, and Item representation is an abstraction as well.
+
+But in our case, when it is required to provide an interface for creating new IoT devices in VR and interact with them, it is not possible to use only items presented on the server. For example, the virtual position in the environment for each item is an important data, which should be accessible by each of the instances.
+
+Therefore, the disadvantages of keeping the equivalent semantic models are:
+
+\begin{enumerate}
+    \item The semantic model should be extended with extra items, such as virtual position or environment setup. These items are needed by each running instance of NUIX-Studio APP.
+    \item The main purpose of the platform is to provide an interface to test new IoT devices inside virtual reality, or extend the existing items with extra functionality. But only real-world devices data is stored on the server, therefore it should be extended with virtual items data.
+\end{enumerate}
+
+In result, extending the semantic model with virtual items helps us to minimize the number of disadvantages while keeping the advantages.
+In the next chapter an example of using the NUIX-Studio is given and the measured performance is analyzed.
 
 \section{Symbols}
 
