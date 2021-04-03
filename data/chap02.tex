@@ -6,90 +6,26 @@
 
 The literature review incorporates three sections: research on building an IoT platform without required support of VR, research on interacting with IoT devices in VR, and, at last, research on creating an IoT-VR Platform.
 
-\section{IoT Frameworks}
+\section{Managing IoT}
 
+Even though using IoT is already considered profitable by many businesses, and automated control saves 
+time and money for companies, the problem of connection between heterogeneous IoT devices has not been solved yet. The frameworks existing nowadays which try to solve this issue seem to be usually not user-friendly and not easy-to-use. 
 
-\section{Figures}
+The providers of services of IoT integration into businesses state that using their solutions a big 
+amount of data from the connected IoT devices can be analyzed and then turned into actionable 
+insights (TODO: add to references https://www.softwareag.com). The insights can be used for lowering energy consumption, analyzing the sensors data etc. These insights can be integrated into the VR-IoT Research platform.
 
-For insertion of figures, we use \cs{includegraphics} under the \env{figure} environment. Below is an example code for including and referencing a figure: Figure~\ref{fig:example}.
+The limitations of the solutions for businesses are:
+\begin{enumerate}
+    \item Price
+    \item No access to the source code
+\end{enumerate}
 
-We suggest that you use PDF for vector graphics, e.g. visualizations of data; JPG for photos or images; and PNG for others.
+Even if researchers and companies, who are going to be the users of the VR-IoT platform can afford paying high price for getting the analyzed data, they still will not have access to the source code, as well as access to the data used for training the models. Users will need to pay for the subscription to the services, and it will require additional time and money to switch to another solution.
 
-NOTE: TIFF or EPS are not supported.
+In \cite{k_mohapatra_solution_2016} it is discussed how the framework for connecting heterogeneous devices should operate the incoming data. In this paper the requirements for managing IoT are given: the communication protocols, security and access control and how the data should be analyzed. In section 4 a Reference IoT-Architecture model is proposed. Each of the solution blocks, such as Data Lake or Event Broker is briefly introduced, but since neither implementation nor tests are given, it can not be considered a good structure.
 
-% Example code for including a figure
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\linewidth]{example-image-a.pdf}
-  \caption{Please input your figure title}
-  {Please enter your figure captions here}
-  \label{fig:example}
-\end{figure}
+The IoT Architectural Framework, proposed in \cite{uviase_iot_2018}, is based on the Service Oriented Architecture (SOA). This paradigm is used to minimize system integration problems, but when the number of services increases, the performance of the solution can drop. In this article a minimum measures for IoT framework are proposed to make the integration easier are proposed \footnote{These measures are used in the requirements for building a VR-IoT platform prototype, described in chapter 3 of this research.} Authors introduce several existing IoT frameworks following the SOA paradigm, and propose their own approach. As it is stated in the paper, the framework has not been implemented, but helps IoT community to understand, in which direction to solve the integration problem.
 
-If there are more than one or more sections to the figure, each panel would be labeled by (a), (b), c()...Additionally, each panel should have a subtitle.
+Compared to \cite{k_mohapatra_solution_2016}, in \cite{ahmad_software_2021} authors provide deeper explanation of how to create an Internet Of Things Driven Data Analysis by using evidence-based software engineering approach. In the List of Processes the are 17 academic publications and industrial solution processes listed. The authors have created a criteria-based framework, by evaluating different activities for the listed 17 IoT-DA applications and giving an evaluation score for each of the solutions. In the result, each of the applications listed can be used in a specific domain, such as Disaster Management or Environmental Monitoring, but none of them has been associated with a domain of a research for IoT. Even though each of the listed criteria fulfilment was satisfactory at least for one solution, none of the solutions could be considered universal, but can be integrated into other solutions, as well as in VR-IoT Research Platform.
 
-Below is an example: Figure~\ref{fig:subfig-a} and Figure~\ref{fig:subfig-b}
-
-
-\begin{figure}
-  \centering
-  \subcaptionbox{Subfigure A title\label{fig:subfig-a}}
-    {\includegraphics[width=0.45\linewidth]{example-image-a.pdf}}
-  \subcaptionbox{Subfigure B title\label{fig:subfig-b}}
-    {\includegraphics[width=0.45\linewidth]{example-image-b.pdf}}
-  \caption{Please input your title for this figure}
-  {Please enter your figure captions here}
-  \label{fig:multi-image}
-\end{figure}
-
-
-
-\section{Tables}
-
-Tables should be clear and easy to read. Use three-line tables if possible, for example Table~\ref{tab:three-line}.
-
-The three-lines in the table can be generated by the package \pkg{booktabs}.
-
-\begin{table}
-  \centering
-  \caption{Please input your title here for the three-line table}
-  \begin{tabular}{ll}
-    \toprule
-    File name          & Description               \\
-    \midrule
-    thuthesis.dtx   & Source file for the template \\
-    thuthesis.cls   & Template file                \\
-    thuthesis-*.bst & BibTeX Reference file        \\
-    thuthesis-*.bbx & BibLaTeX Reference sample file \\
-   
-    \bottomrule
-  \end{tabular}
-  \label{tab:three-line}
-\end{table}
-
-If there are necessary superscripts for the table contents, you can use \pkg{threeparttable}. The lettering would be a, b, c, etc...
-
-Below is an example:
-
-\begin{table}
-  \centering
-  \begin{threeparttable}[c]
-    \caption{Example for table with superscripts}
-    \label{tab:three-part-table}
-    \begin{tabular}{ll}
-      \toprule
-      文件名                 & 描述                         \\
-      \midrule
-      thuthesis.dtx\tnote{a} & Template source file \\
-      thuthesis.cls\tnote{b} & Template file        \\
-      thuthesis-*.bst        & BibTeX Reference template file                                 \\
-      thuthesis-*.bbx        & BibLaTeX Reference File                                               \\
-      thuthesis-*.cbx        & BibLaTeX Example     \\
-      \bottomrule
-    \end{tabular}
-    \begin{tablenotes}
-      \item [a] Description of note a,
-      \item [b] Description of note b.
-    \end{tablenotes}
-  \end{threeparttable}
-\end{table}
