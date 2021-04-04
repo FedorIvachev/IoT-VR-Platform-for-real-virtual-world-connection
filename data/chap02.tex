@@ -4,7 +4,7 @@
 \chapter{LITERATURE REVIEW}
 
 
-The literature review incorporates three sections: research on building an IoT platform without required support of VR, research on interacting with IoT devices in VR, and, at last, research on creating an IoT-VR Platform.
+The literature review incorporates three sections: research on building an IoT platform without required support of VR, research on interacting with IoT devices in VR and AR, and, at last, research on creating an IoT-VR Platform.
 
 \section{Managing IoT}
 
@@ -27,5 +27,30 @@ In \cite{k_mohapatra_solution_2016} it is discussed how the framework for connec
 
 The IoT Architectural Framework, proposed in \cite{uviase_iot_2018}, is based on the Service Oriented Architecture (SOA). This paradigm is used to minimize system integration problems, but when the number of services increases, the performance of the solution can drop. In this article a minimum measures for IoT framework are proposed to make the integration easier are proposed \footnote{These measures are used in the requirements for building a VR-IoT platform prototype, described in chapter 3 of this research.} Authors introduce several existing IoT frameworks following the SOA paradigm, and propose their own approach. As it is stated in the paper, the framework has not been implemented, but helps IoT community to understand, in which direction to solve the integration problem.
 
-Compared to \cite{k_mohapatra_solution_2016}, in \cite{ahmad_software_2021} authors provide deeper explanation of how to create an Internet Of Things Driven Data Analysis by using evidence-based software engineering approach. In the List of Processes the are 17 academic publications and industrial solution processes listed. The authors have created a criteria-based framework, by evaluating different activities for the listed 17 IoT-DA applications and giving an evaluation score for each of the solutions. In the result, each of the applications listed can be used in a specific domain, such as Disaster Management or Environmental Monitoring, but none of them has been associated with a domain of a research for IoT. Even though each of the listed criteria fulfilment was satisfactory at least for one solution, none of the solutions could be considered universal, but can be integrated into other solutions, as well as in VR-IoT Research Platform.
+Compared to \cite{k_mohapatra_solution_2016}, in \cite{ahmad_software_2021} authors provide deeper explanation of how to create an Internet Of Things Driven Data Analysis by using evidence-based software engineering approach. In the article 17 academic publications and industrial solution processes are listed. The authors have created a criteria-based framework, by evaluating different activities for the listed 17 IoT-DA applications and giving an evaluation score for each of the solutions. In the result, each of the applications listed can be used in a specific domain, such as Disaster Management or Environmental Monitoring, but none of them has been associated with a domain of a research for IoT. Even though each of the listed criteria fulfilment was satisfactory at least for one solution, none of the solutions could be considered universal, but can be integrated into other solutions, as well as in VR-IoT Research Platform.
 
+In chapter 1 it was mentioned how creating of 6G can influence the IoT market. In \cite{guo_enabling_2021} a comprehensive study was done, with explanation of how 5G limitations for massive IoT can be overcome by using 6G networks. It was explained how machine learning and blockchain can play the main role in IoT ecosystems. New technologies can be supported such as holographic communications, which can be easily tested in VR-IoT Research Platform.
+
+\section{Interacting with IoT devices in VR and AR}
+
+Augmented reality is used to overlay digital objects onto the objects surrounding us in real life. Extra virtual elements can be attached to the real-world devices. The main idea of the research articles mentioned further is to create a two-way synchronization between Augmented reality and real world: changes in the virtual world are applied to the real world and vice-versa.
+
+Rendering digital devices for Augmented reality and Virtual reality is different: in augmented reality it is impossible to replace the real element with a virtual one. Creating Virtual reality environment similar to the real-world environment requires more time and effort compared to scanning objects to use them in Augmented reality, but in result researchers can have more freedom, such as changing any object parameters. 
+In \cite{ankireddy_augmented_2019} authors developed image processing-based approach to control a specific device in real-world by pointing on it with their phone camera and pressing the button (turn the fan On and Off). Their solution is simple but at the same time it shows that it is possible to control IoT devices inside AR at a very low cost. Similar results were achieved in \cite{jo_-situ_2016}, where a generic AR framework for managing IoT devices was proposed, and in \cite{alam_augmented_2017} for creating a safety system by viewing monitoring information on a AR device screen when pointing at the object.
+
+One of the most popular Mixed reality headsets is Microsoft Hololens. Using this device, it is possible to use hands recognition, as well as use API for spatial awareness. In \cite{sun_magichand_2019} authors proposed used deep learning approach to create a tool for interacting with IoT devices using hand gestures. 
+Cities such as Shanghai, New York, Moscow can already be considered as smart cities, because they have been implementing smart solutions for several years already. Using Augmented and Virtual reality can help in creating IoT solutions for such smart cities and networks, as it is shown in \cite{chakareski_uav-iot_2019}, \cite{carneiro_bim_2018}. As for other domains, in \cite{paul_role_2019} it was shown how AR and VR combined with IoT can be used for smart education, and in \cite{jang_building_2019-1} for energy management. In sum, using AR and VR for managing IoT has been proved to be effective.
+
+\section{IoT-VR platforms}
+
+The research has no novelty, if a solution already exists. Fortunately, none of the following articles is focused on creating a platform for creating new IoT devices using VR.
+
+Nonetheless, the following articles are helpful for developing VR-IoT platform.
+
+In the previous section it was explained how 6G can influence the IoT market. In \cite{liao_information-centric_2021} authors provide their solution for integrating AR/VR inside 6G massive IoT environment.
+
+As mentioned above, using VR for IoT research requires building a virtual environment. Nowadays most of VR headsets provide 6 degrees of freedom, which means that it can be possible to move in the real world and virtual world at the same time. In \cite{you_internet_2018} authors research how IoT can be used for seamless virtual reality space created by 360 degree photos and videos.
+
+In \cite{myeong-in_choi_design_2017}, \cite{simiscuka_synchronisation_2018}, \cite{simiscuka_real-virtual_2019}, \cite{krishnan_performance_2020} VR-IoT platforms were proposed, but none of the arcticles is focused on implementing a universal solution, which can be used for research in IoT. Instead, they only provide a demo for only one device, and overall the research can not be called considered deep enough by the author.
+
+Finally, in \cite{hu_virtual_2021} a research on VR headsets market was provided, and several applications of VR in IoT were proposed. The authors mainly focused on VR streaming solutions.
