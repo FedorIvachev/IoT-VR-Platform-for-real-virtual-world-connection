@@ -21,18 +21,23 @@
 
 TEXT STARTS HERE
 
-Как сказано в предыдущей главе, сначала будет рассмотрен пример работы платформы, будут произведены замеры производительности.
-
-In this chapter a smart home, one of the most common IoT environments, is used for research creating a device of a new type. The are several devices in the example configuration(link to figure = photo): 
+In this chapter Smart home, one of the most common IoT environments, is used for research on creating a device of a new type. There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}): 
 \begin{enumerate}
     \item A Smart Wi-Fi lamp;
     \item A PC running openHAB server and NUIX-Studio App instance;
     \item A PC running NUIX-Studio App instance;
     \item An Oculus Quest VR Headset;
-    \item A smart vacuum cleaner\footnote{This device will be use.}.
+    \item A smart vacuum cleaner.
 \end{enumerate}
 
-The example research is on adding gesture control functionality for the smart lamp.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/TestingEquipment.png}
+  \caption{Testing equipment.}
+  \label{fig:TestingEquipment-figure}
+\end{figure}
+
+The example research is on adding gesture control functionality for the smart lamp\footnote{Smart vacuum cleaner and remote PC will be used in the next experiment}.
 
 The virtual environment provides Widgets for Light and Gesture Recognition. In other words, a virtual lamp should be equivalent to the real-world one and gesture interface should be implemented.
 
@@ -55,7 +60,7 @@ Next is adding items linked to the lamp channels. In the example the lamp bright
   \label{fig:SemanticModelOne-figure}
 \end{figure}
 
-As seen in Figure~\ref{fig:SemanticModelOne-figure}, the brightness can be already controlled by moving the dimmer. The real-world lamp will change the brightness based on the value on the server.
+As seen on Figure~\ref{fig:SemanticModelOne-figure}, the brightness can be already controlled by moving the dimmer. The real-world lamp will change the brightness based on the value on the server.
 
 Next step is adding tags to the item: the lamp should be controlled by Gestures, then a corresponding tag has to be added (Figure~\ref{fig:ItemEditPage-figure}).
 
@@ -66,16 +71,44 @@ Next step is adding tags to the item: the lamp should be controlled by Gestures,
   \label{fig:ItemEditPage-figure}
 \end{figure}
 
-The server has been set up.
+The server has been set up for connection to NUIX-Studio App instances.
 
 \section{Running NUIX-Studio APP}
 
-After the server has been set up, and the environment has been chosen the platform is ready to run on the devices.
+After the server has been set up, and the Smart home environment has been chosen, the platform is ready to run on the devices.
+
+(A screenshot with gesture control).
+
+In the experiment a VR-IoT platform user performs three tasks:
+\begin{enumerate}
+    \item Put on Virtual reality headset;
+    \item Press the virtual button to establish a Client-Server connection and receive the items list;
+    \item Perform a "Thumb up" gesture. By rotating the fist, the lamp brightness changes in the VR-IoT environment\footnote{Both in real and virtual worlds}.
+\end{enumerate}
+
+Данные действия были проделаны пользователем платформы. Таким образом, была добавлена поддержка жестов для управления яркостью лампы и эксперимент по созданию нового устройства для существующей среды можно считать успешным. 
 
 \section{Performance analysis}
 
 Анализ производительности платформы не является основной целью исследования, но тем не менее, он показателен с точки зрения нахождения бутылочных горлышек. Будет показано, что задачи рендеринга имеет смысл выполнять на отдельном сервере, а иметь общую базу данных для всех экземпляров приложения поможет добиться в итоге одновременной работы нескольких пользователей внутри системы.
 
+В первом эксперименте используются шлем виртуальной реальности, умная лампочка и сервер с запущенным на нем приложением. Предположим, что внутри системы умного дома используется датчик света, который находится на относительно большом расстоянии от лампы (2-3 метра), и срабатывает, когда количество света, падающего на его датчик, превосходит некоторое пороговое значение. К примеру, такой setup иногда используется на предприятиях при первоначальной настройке освещения для нахождения грани между комфортным уровнем освещения и оптимальным уровнем энергопотребления. Датчик света будет срабатывать именно при некотором достаточно большом значении яркости лампы. Таким образом, нужна максимально точная настройка уровня яркости лампочки.
+
+В предыдущем эксперименте было показано, что управление жестами возможно для контроля уровня яркости лампы. Покажем, что в данном случае перенос вычислений со шлема вирутальной реальности на сервер необходим. Задание пользователя состоит из тех же шагов, что и в предыдущем эксперименте, но при этом добавляется еще один шаг: точная настройка уровня яркости. Предположим, что датчик освещения срабатывает при уровне яркости лампочки 50 из 100\footnote{Данное число выбрано автором исследования случайно, без опоры на принципы fits law}. Задача пользователя как можно быстрее привести яркость лампочки в данное положение при помощи жестового управления. Для того, чтобы исключить дополнительные операции, не относящие к непосредственному использованию жестов для изменения яркости лампы, такие как запуск системы, подопытному было необходимо повторить шаг с приведением яркости лампы в заданное положение два раза. Время, между первым и вторым рахом, когда яркость лампы равнялась заданному значению, можно разделить на две составляющих (Equation \eqref{eq:totaltime}) : время реакции подопытного на успешное изменение уровня яркости $t_{foc}$, и время выполнения новой калибровки $t_{cal}$.
+
+\begin{equation}
+  t = t_{foc} + t_{cal}
+  \label{eq:totaltime}
+\end{equation}
+
+В эксперименте участововало пять человек. Были произведены две серии опытов: в первой серии подсчет освещения лампы происходил на устройстве виртуальной реальности, а во второй - на сервере. На устройство виртуальной реальности же передавалась лишь информация, а именно карта света. В каждой серии опытов было произведено по двадцать пять замеров, и полученные данные были помещены на график (). Если учесть, что время фокусировки подопытного $t_{foc}$ - независимая от измененных параметров синхронизации величина, то разница между подсчитанным временем в первой и во второй серии опытов как раз будет равна разнице между временем, затраченным на калибровку яркости лампы в первой и во второй серии опытов. (Equation \eqref{eq:totaltime})
+
+\begin{equation}
+  t_{\delta} = (t_{foc} + t_{cal_1}) - (t_{foc} + t_{cal_1}) = t_{cal_1} - t_{cal_2}
+  \label{eq:deltatime}
+\end{equation}
+
+Как видно из получившейся гистограммы, абсолютная разница при выполнении данного задания 
 
 Тест 1: запуск одного источника света на окулусе с хорошей четкостью. Фпс падает до 20, невозможность нормально перемещаться по комнате и управлять светом. Переносим обработку света на сервер. Теперь фпс на окулусе уже 72, и можно выполнять считывание рук с большей частотой. Таким образом, и яркость лампы на сервере меняется чаще. 
 
