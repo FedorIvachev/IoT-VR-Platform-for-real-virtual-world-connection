@@ -1,75 +1,14 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{Theoretical research on creating VR-IoT research platform}
+\chapter{THEORETICAL EVALUATION OF VR-IOT RESEARCH PLATFORM}
+В данной главе будет приведена теоретическая оценка различных параметров платформы. В отличие от существующих решений на рынке, это - первая платформа, позволяющая автоматически переносить практически любые устройства из реального мира в виртуальный. Помимо этого, платформа также позволяет создавать новые устройства в виртуальной реальности посредством конструктора устройств, о котором будет рассказано позднее. Несмотря на то, что основная цель работы состояла в проектривании платформы, будет также показано, как должен выглядеть API для внешних проектов, подключенных к платформе.
 
-In this chapter I talk about the theoretical questions for building a platform, describe the limitations of the current one and how to overcome them, or, at least theoretically, if it is possible to do so.
+Если в предыдущей части мы рассматривали ограничения, продиктованные железом, то в этой части мы сосредоточимся именно на ограничениях, продиктованных архитектурой, а также покажем, что на самом деле их нет.
 
-The template supports BibTex and BibLaTex to cite your references. Below is an example usage for BibTex with \pkg{natbib}:
+Во-первых, будет доказан полнота поддержки устройств. Под полнотой здесь подразумевается пооеджка практически всех существующих стандартов передачи (перечисляю), а также значений items. Я перечисляю различные типы параметров для реальных устройств и показываю, что практически все они могут быть распарсены уже на этапе хранения на сервере. Пример: различные сенсоры, возвращающие или число, или булевое значение. Далее передача голоса, также доступна, передача различных команд идет через string command, передача видео доступна.
 
+То есть, основываясь на том, что опенхаб поддерживает практически любые типы устройств, мы, посредством перенесения структуры опенхаба на нуих студию достиглы той же полноты поддержки. Тем не менее, необходимо не только уметь визуализировать айтемс, но еще и изменять их в вр. И вот тут кроется основная задача разработки. Тут я могу сослаться на версию 0.5 платформы, где были реализованы различные типы устройств, а также теоритически расписать, поддержка каких сенсоров будет доступна.
 
-\section{Sequential numbering}
+В общем, потом показываю, что ограничения, продиктованные физикой, могут быть реализованы на сервере, как это сказано в предыдущей главе, но тем не менее, сначала надо разработать данную физику, так как движук юнити не настолько продвинутый.
 
-Under the sequencing numbering system, the default \cs{cite} command is the same as \cs{citep}. The number will be included within the square brackets.
-
-Continual references will be automatically be replaced by a short dash.
-
-% Example citations
-\thusetup{
-  cite-style = super,
-}
-\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
-  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
-  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
-  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
-  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
-
-% Deprecated
-%Another type of reference style is given below, where the numbering is given within the text rather than a %superscript. 
-%***Please use a uniformed citation style throughout.
-
-%\thusetup{
-%  cite-style = inline,
-%}
-%\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-%  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
-%  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
-%  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
-%  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
-%  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
-%\end{tabular}
-
-
-
-\section{Author with year}
-
-Citing with authors' name and year, \cs{cite} and \cs{citet} are equivalent.
-
-\thusetup{
-  cite-style = author-year,
-}
-\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-  \verb|\cite{zhangkun1994}|                & \cite{zhangkun1994}                \\
-  \verb|\citet{zhangkun1994}|               & \citet{zhangkun1994}               \\
-  \verb|\citep{zhangkun1994}|               & \citep{zhangkun1994}               \\
-  \verb|\cite[42]{zhangkun1994}|            & \cite[42]{zhangkun1994}            \\
-  \verb|\citep{zhangkun1994,zhukezhen1973}| & \citep{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
-
-\vskip 2ex
-\thusetup{
-  cite-style = super,
-}
-Please note, all references should be cited within your main thesis.
-\cite{zhangkun1994,zhukezhen1973,dupont1974bone,zhengkaiqing1987,%
-  jiangxizhou1980,jianduju1994,merkt1995rotational,mellinger1996laser,%
-  bixon1996dynamics,mahui1995,carlson1981two,taylor1983scanning,%
-  taylor1981study,shimizu1983laser,atkinson1982experimental,%
-  kusch1975perturbations,guangxi1993,huosini1989guwu,wangfuzhi1865songlun,%
-  zhaoyaodong1998xinshidai,biaozhunhua2002tushu,chubanzhuanye2004,%
-  who1970factors,peebles2001probability,baishunong1998zhiwu,%
-  weinstein1974pathogenic,hanjiren1985lun,dizhi1936dizhi,%
-  tushuguan1957tushuguanxue,aaas1883science,fugang2000fengsha,%
-  xiaoyu2001chubanye,oclc2000about,scitor2000project%
-}.
+Тем не менее, как практически, так и теоретически показано, что платформа может использоваться для создания новых устройств.

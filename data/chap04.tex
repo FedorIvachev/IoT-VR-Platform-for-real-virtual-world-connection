@@ -1,73 +1,117 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{PERFORMANCE TESTING AND USABILITY EVALUATION OF VR-IoT Research Platform}
-
-The template supports BibTex and BibLaTex to cite your references. Below is an example usage for BibTex with \pkg{natbib}:
+\chapter{PERFORMANCE TESTING AND USABILITY EVALUATION OF VR-IOT RESEARCH PLATFORM}
 
 
-\section{Sequential numbering}
+План части: используем пресет из предыдущей части: лампа сяоми. Далее можем добавить пылесос в качестве примера и мобильный телефон. для каждого из них автоматически создается виртуальный объект, у всех у них хранится локация.
 
-Under the sequencing numbering system, the default \cs{cite} command is the same as \cs{citep}. The number will be included within the square brackets.
+Для лампы добавляется новая функция - жестовое управление. Для поддержки управления жестами добавляется виртуальная камера (через тэг в опенхабе).
 
-Continual references will be automatically be replaced by a short dash.
+еще можно показать, как управлять пылесосом используя жест, указывающий на точку на полу + голосовое управление.
 
-% Example citations
-\thusetup{
-  cite-style = super,
-}
-\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
-  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
-  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
-  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
-  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
+Дальше показывается, как это все тестируется на мак мини и на окулусе.
 
-% Deprecated
-%Another type of reference style is given below, where the numbering is given within the text rather than a %superscript. 
-%***Please use a uniformed citation style throughout.
+Замеры времени работы добавляю. Помимо этого показаны результаты тестирования на одновременную работу и соотв ошибки:
+1. Объясняется, как избежать шторма запросов через рест апи и как это влияет на hci компоненту. Например, движение рук.
+2. Показаны проблемы с производительностью при нескольких источниках света, и как это можно избежать с помощью внешнего сервера для вычислений.
+3. Объясняются физические ограничения, можно привести ссылку на книгу о звуке.
 
-%\thusetup{
-%  cite-style = inline,
-%}
-%\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-%  \verb|\cite{zhangkun1994}|               & \cite{zhangkun1994}               \\
-%  \verb|\citet{zhangkun1994}|              & \citet{zhangkun1994}              \\
-%  \verb|\citep{zhangkun1994}|              & \citep{zhangkun1994}              \\
-%  \verb|\cite[42]{zhangkun1994}|           & \cite[42]{zhangkun1994}           \\
-%  \verb|\cite{zhangkun1994,zhukezhen1973}| & \cite{zhangkun1994,zhukezhen1973} \\
-%\end{tabular}
+Далее я говорю, что в этой части были расписаны именно хардварные ограничения, которы е в скором времени будут обойдены с помощью, во-первых, увеличения производительности самих устройств, а во-вторых, увеличения пропускной способности сотовых сетей, позволяющих передавать большие объемы данных за секунду, т.е. 6G, что позволит перевести большинство изменений на сервер/в облако (здесь цитирую iot в облаках статью).
 
 
+TEXT STARTS HERE
 
-\section{Author with year}
+Как сказано в предыдущей главе, сначала будет рассмотрен пример работы платформы, будут произведены замеры производительности.
 
-Citing with authors' name and year, \cs{cite} and \cs{citet} are equivalent.
+In this chapter a smart home, one of the most common IoT environments, is used for research creating a device of a new type. The are several devices in the example configuration(link to figure = photo): 
+\begin{enumerate}
+    \item A Smart Wi-Fi lamp;
+    \item A PC running openHAB server and NUIX-Studio App instance;
+    \item A PC running NUIX-Studio App instance;
+    \item An Oculus Quest VR Headset;
+    \item A smart vacuum cleaner\footnote{This device will be use.}.
+\end{enumerate}
 
-\thusetup{
-  cite-style = author-year,
-}
-\begin{tabular}{l@{\quad$\Rightarrow$\quad}l}
-  \verb|\cite{zhangkun1994}|                & \cite{zhangkun1994}                \\
-  \verb|\citet{zhangkun1994}|               & \citet{zhangkun1994}               \\
-  \verb|\citep{zhangkun1994}|               & \citep{zhangkun1994}               \\
-  \verb|\cite[42]{zhangkun1994}|            & \cite[42]{zhangkun1994}            \\
-  \verb|\citep{zhangkun1994,zhukezhen1973}| & \citep{zhangkun1994,zhukezhen1973} \\
-\end{tabular}
+The example research is on adding gesture control functionality for the smart lamp.
 
-\vskip 2ex
-\thusetup{
-  cite-style = super,
-}
-Please note, all references should be cited within your main thesis.
-\cite{zhangkun1994,zhukezhen1973,dupont1974bone,zhengkaiqing1987,%
-  jiangxizhou1980,jianduju1994,merkt1995rotational,mellinger1996laser,%
-  bixon1996dynamics,mahui1995,carlson1981two,taylor1983scanning,%
-  taylor1981study,shimizu1983laser,atkinson1982experimental,%
-  kusch1975perturbations,guangxi1993,huosini1989guwu,wangfuzhi1865songlun,%
-  zhaoyaodong1998xinshidai,biaozhunhua2002tushu,chubanzhuanye2004,%
-  who1970factors,peebles2001probability,baishunong1998zhiwu,%
-  weinstein1974pathogenic,hanjiren1985lun,dizhi1936dizhi,%
-  tushuguan1957tushuguanxue,aaas1883science,fugang2000fengsha,%
-  xiaoyu2001chubanye,oclc2000about,scitor2000project%
-}.
+The virtual environment provides Widgets for Light and Gesture Recognition. In other words, a virtual lamp should be equivalent to the real-world one and gesture interface should be implemented.
+
+\section{Server setup}
+Firstly, a binding needs to be added to the openHAB server. Xiaomi Mi IO binding makes it possible to automatically add the Xiaomi Smart Wi-Fi Lamp to the server (Figure~\ref{fig:ServerSetupProcedure-figure}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/ServerSetupProcedure.png}
+  \caption{Server setup procedure.}
+  \label{fig:ServerSetupProcedure-figure}
+\end{figure}
+
+Next is adding items linked to the lamp channels. In the example the lamp brightness dimmer is added to the semantic model.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/SemanticModelOne.png}
+  \caption{Semantic model 1.}
+  \label{fig:SemanticModelOne-figure}
+\end{figure}
+
+As seen in Figure~\ref{fig:SemanticModelOne-figure}, the brightness can be already controlled by moving the dimmer. The real-world lamp will change the brightness based on the value on the server.
+
+Next step is adding tags to the item: the lamp should be controlled by Gestures, then a corresponding tag has to be added (Figure~\ref{fig:ItemEditPage-figure}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/ItemEditPage.png}
+  \caption{Item Edit Page.}
+  \label{fig:ItemEditPage-figure}
+\end{figure}
+
+The server has been set up.
+
+\section{Running NUIX-Studio APP}
+
+After the server has been set up, and the environment has been chosen the platform is ready to run on the devices.
+
+\section{Performance analysis}
+
+In the current state of the platform development analyzing performance is not the main task, but it is still required for finding the bottlenecks.
+The first experiment is the analysis of the system startup, performed on three devices by registering the startup time (Figure~\ref{fig:SystemStartupScheme-figure}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/SystemStartupScheme.png}
+  \caption{System startup scheme.}
+  \label{fig:SystemStartupScheme-figure}
+\end{figure}
+
+The hardware specifications can be seen on Table~\ref{tab:hardware-specifications-table} \footnote{Localhost PC is a notebook running openHAB server as well as one instance of NUIX-Studio APP; Remote PC is a computer running one instance of NUIX-Studio APP and connected to the same Wi-Fi network as localhost PC; Oculus Quest is a Virtual Reality Headset running NUIX-Studio APP and connected to the same Wi-Fi network as PCs.}.
+
+\begin{table}
+  \centering
+  \begin{threeparttable}[c]
+    \caption{Hardware specifications in the experimental setup}
+    \label{tab:hardware-specifications-table}
+    \begin{tabular}{ll}
+      \toprule
+      Unit    &         Specifications                 \\
+      \midrule
+      Localhost PC & Ryzen 5 3500u, Windows 10 \\
+      Remote PC & Core i5 4278U, macOS 11.2.3    \\
+      Oculus Quest        & Qualcomm Snapdragon 835, Android-based            \\
+      \bottomrule
+    \end{tabular}
+  \end{threeparttable}
+\end{table}
+
+Each test was performed on a new instance of Unity APP to avoid cashing influence. And then mean values have been calculated (Figure~\ref{fig:SystemInitTime-figure}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{figures/SystemInitTime.png}
+  \caption{System initialization time measured on different client devices.}
+  \label{fig:SystemInitTime-figure}
+\end{figure}
+
+As seen on Figure~\ref{fig:SystemInitTime-figure}, the system initialization time is a time-consuming operation, which from 200 to over 600ms in average to perform.
+
+
