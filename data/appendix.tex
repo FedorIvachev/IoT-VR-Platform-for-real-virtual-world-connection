@@ -1,59 +1,61 @@
 % Appendix
 
-\chapter{Title bla..bla..bla...}
+\chapter{PLATFORM DEVELOPMENT}
 
-You can include in this section important evidence that is related to your research, but might affect the logic of your main thesis if included in the main writing. E.G. tables, pseudo-code, graphs etc. You can add accordingly.
-附录是与论文内容密切相关、但编入正文又影响整篇论文编排的条理和逻辑性的资料，例如某些重要的数据表格、计算程序、统计表等，是论文主体的补充内容，可根据需要设置。
+During the development, there were several challenges faced:
+\begin{enumerate}
+    \item Distribution of the source code;
+    \item Distribution of the NUIX-Studio App demos;
+    \item Creating Tutorials;
+    \item Providing API for external projects;
+    \item Updating the dependencies;
+    \item Rewriting the code to support new architectures.
+\end{enumerate}
 
-% Appendix figures
-\section{Figure example 图表示例}
+The main repository of the platform is hosted at https://github.com/VRSimulator/NUIX-Studio-Client (TODO: put the link into the references), with the previous prototypes being hosted on other repositories.
 
-% Below is an example of inserting an appendix image
-\subsection{Figure 图}
+The distribution of the source code and the NUIX-Studio App demos required keeping the size of the repository at minimum, while providing an easy installation procedure. To follow these requirements, NUIX-Studio was shared as a separate package, possible to integrate into any Unity project.
 
-This is an example of an appendix image: (Figure~\ref{fig:appendix-figure})
-附录中的图片示例（图~\ref{fig:appendix-figure}）。
+The first prototypes of the NUIX-Studio platform did not support Virtual reality (Figure~\ref{fig:Prototype2-figure}), and were based on a different architecture (Figure~\ref{fig:Prototype3Structure-figure}).
+
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\linewidth]{example-image-a.pdf}
-  \caption{Example of appendix figure 附录中的图片示例}
-  \label{fig:appendix-figure}
+  \includegraphics[width=0.6\linewidth]{figures/Prototype2.png}
+  \caption{The second prototype of the VR-IoT Research platform}
+  \label{fig:Prototype2-figure}
 \end{figure}
 
-% Tables
-\subsection{Tables 表格}
-
-Below is an example of tables in the appendix (Table~\ref{tab:appendix-table}).
-
-附录中的表格示例（表~\ref{tab:appendix-table}）。
-
-\begin{table}
+\begin{figure}
   \centering
-  \caption{附录中的表格示例}
-  \begin{tabular}{ll}
-    \toprule
-    % Input the file + description here
-    % File name & Description
-    文件名          & 描述                         \\
-    \midrule
-    thuthesis.dtx   & 模板的源文件，包括文档和注释 \\
-    thuthesis.cls   & 模板文件                     \\
-    thuthesis-*.bst & BibTeX 参考文献表样式文件    \\
-    thuthesis-*.bbx & BibLaTeX 参考文献表样式文件  \\
-    thuthesis-*.cbx & BibLaTeX 引用样式文件        \\
-    \bottomrule
-  \end{tabular}
-  \label{tab:appendix-table}
-\end{table}
+  \includegraphics[width=0.9\linewidth]{figures/Prototype3Structure.png}
+  \caption{The third prototype's structure}
+  \label{fig:Prototype3Structure-figure}
+\end{figure}
 
+The difference between the final structure used in NUIX-Studio and the structure in Figure~\ref{fig:Prototype3Structure-figure} is in the way the data is stored on the server. In the previous prototypes the server was responsible not only for storing and synchronizing item parameters, but also for keeping all the Unity-specific functionality in a separate framework. This framework was responsible for building Item representations for virtual reality and sharing them to other NUIX-Studio App instances as Unity Gameobjects. The main limitation of this approach is that Unity Gameobjects have much bigger size compared to the Data transfer objects used in the final prototype.
 
-% This is an example of mathematical formula
-\section{Mathematical formula 数学公式}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/Prototype3.png}
+  \caption{The third prototype of the VR-IoT Research platform. Button Widget.}
+  \label{fig:Prototype3-figure}
+\end{figure}
 
-This is an example of formula (Equation~\eqref{eq:appendix-equation})
-附录中的数学公式示例（公式~\eqref{eq:appendix-equation}）。
-\begin{equation}
-  \frac{1}{2 \symup{\pi} \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k)
-  \label{eq:appendix-equation}
-\end{equation}
+The third prototype provided only a button Widget (Figure~\ref{fig:Prototype3-figure}), but after integrating Mixed Reality Toolkit in the fourth prototype (Figure~\ref{fig:Prototype4-figure}), other Widgets were added to the platform.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/Prototype4.png}
+  \caption{The fourth prototype of the VR-IoT Research platform. A virtual copy of the real-world smart home environment was used with virtual items added, such as location item, contact item, player item switch item, and dimmer item. Also several Widgets were supported: sight sensor, motor, light widget, pressure sensor, video streaming screens and gesture recognition.}
+  \label{fig:Prototype4-figure}
+\end{figure}
+
+In the final prototype (Figure~\ref{fig:FinalPrototype-figure}), code for most of the items was rewritten to support the new architecture. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/FinalPrototype.png}
+  \caption{Screenshot of the final prototype of NUIX-Studio.}
+  \label{fig:FinalPrototype-figure}
+\end{figure}

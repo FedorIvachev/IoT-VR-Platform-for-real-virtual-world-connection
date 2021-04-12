@@ -1,6 +1,6 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{PROTOTYPE OF VR-IOT RESEARCH PLATFORM}
+\chapter{PROTOTYPE OF THE VR-IOT RESEARCH PLATFORM}
 
 Before the platform's actual development, several meetings were held to discuss the important implementation details and the architecture of the VR-IoT research platform, or, as it was named later, "NUIX-Studio." At the link ( https://vrsimulator.github.io/ TODO: add to the references)  the published meeting minutes can be found. 
 
@@ -139,7 +139,7 @@ In the current implementation of the platform, four different REST API commands 
 
 Receiving the states of the items from the server is performed by getting the events from the server: once the event is received, the item state can be retrieved from the payload.
 
-\section{NUIX-Studio APP}
+\section{NUIX-Studio App}
 
 As mentioned above, there can be several NUIX-Studio APP instances running at the same time. Each of them has access and performs syncing to the Server through REST API. The instances can be of one of three types:
 
@@ -156,7 +156,7 @@ As mentioned above, there can be several NUIX-Studio APP instances running at th
   \label{fig:AppInstances-figure}
 \end{figure}
 
-Each of the instances performs access to the same data on the server, making it possible to work simultaneously in one virtual environment and divide tasks between several NUIX-Studio App instances. One of the instances can be used for computations, while the other instances for interacting with the devices in Virtual reality.
+Each of the instances performs access to the same data on the server, making it possible to work simultaneously in one virtual environment and divide tasks between several NUIX-Studio App instances (Figure~\ref{fig:AppInstances-figure}). One of the instances can be used for computations, while the other instances for interacting with the devices in Virtual reality.
 
 \subsection{NUIX-Studio App Architecture}
 

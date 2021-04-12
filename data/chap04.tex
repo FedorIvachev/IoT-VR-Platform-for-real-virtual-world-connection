@@ -54,7 +54,7 @@ The next step is adding item tags for gesture control and for the light visualiz
 
 The server has been set up for connection to NUIX-Studio App instances.
 
-\section{Running NUIX-Studio APP}
+\section{Running NUIX-Studio App}
 
 After the server has been set up and the Smart home environment has been chosen, the platform App instances are ready to run on the devices.
 
@@ -167,20 +167,30 @@ As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it too
   \label{fig:DeltaTime-figure}
 \end{figure}
 
-Additional data were also analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen. Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
+\begin{figure}
+  \centering
+  \subcaptionbox{Series 1\label{fig:exp-screenshot-a}}
+    {\includegraphics[width=0.45\linewidth]{figures/Series1FPSOculus.jpg}}
+  \subcaptionbox{Series 2\label{fig:exp-screenshot-b}}
+    {\includegraphics[width=0.45\linewidth]{figures/Series2FPSOculus.jpg}}
+  \caption{Screenshots of the experiment.}
+  \label{fig:exp-screenshot}
+\end{figure}
+
+Additional data were also analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
 
 
 \begin{figure}
   \centering
   \includegraphics[width = 0.9 \linewidth]{figures/Series2FPSpng.png}
-  \caption{FPS graph during the first series of the experiment for transfer computations.}
+  \caption{FPS graph during the first series of the experiment of computations transfer.}
   \label{fig:Series2FPSpng-figure}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[width = 0.9 \linewidth]{figures/Series1FPS.png}
-  \caption{FPS graph during the second series of the experiment for transfer computations.}
+  \caption{FPS graph during the second series of the experiment of computations transfer.}
   \label{fig:Series1FPSpng-figure}
 \end{figure}
 
