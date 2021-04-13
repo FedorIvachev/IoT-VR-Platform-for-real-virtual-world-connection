@@ -2,7 +2,7 @@
 
 \chapter{PERFORMANCE TESTING AND USABILITY EVALUATION OF THE VR-IOT RESEARCH PLATFORM}
 
-In this chapter, Smart home, one of the most common IoT environments, is used to create a device of a new type. There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}):
+In this chapter, one of the most common IoT environments Smart home is used to create a device of a new type. There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}):
 \begin{enumerate}
     \item A Smart Wi-Fi lamp;
     \item A PC running openHAB server and NUIX-Studio App instance;
@@ -20,10 +20,10 @@ In this chapter, Smart home, one of the most common IoT environments, is used to
 
 In the following experiments, gesture control functionality is added for the smart lamp\footnote{Smart vacuum cleaner and remote PC will be used in the next experiment}.
 
-In the virtual environment scene Widgets for Light and Gesture Recognition are created. In other words, virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
+Widgets for Light and Gesture Recognition are created in the virtual environment scene. In other words, virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
 
 \section{Server setup}
-Firstly, a binding needs to be added to the openHAB server. Xiaomi Mi IO binding makes it possible to automatically add the Xiaomi Smart Wi-Fi Lamp to the server (Figure~\ref{fig:ServerSetupProcedure-figure}).
+As a first step, a binding needs to be added to the openHAB server. Xiaomi Mi IO binding makes it possible to automatically add the Xiaomi Smart Wi-Fi Lamp to the server (Figure~\ref{fig:ServerSetupProcedure-figure}).
 
 \begin{figure}
   \centering
@@ -32,7 +32,7 @@ Firstly, a binding needs to be added to the openHAB server. Xiaomi Mi IO binding
   \label{fig:ServerSetupProcedure-figure}
 \end{figure}
 
-Next is adding items linked to the lamp channels. In the example, the lamp brightness dimmer is added to the semantic model.
+The next step is adding items linked to the lamp channels. In the example, the lamp brightness dimmer is added to the semantic model.
 
 \begin{figure}
   \centering
@@ -60,7 +60,7 @@ After the server has been set up and the Smart home environment has been chosen,
 
 (A screenshot with gesture control).
 
-In the experiment, a VR-IoT platform user performs three tasks:
+In the experiment, a VR-IoT platform user performs three actions:
 \begin{enumerate}
     \item Put on Virtual reality headset;
     \item Press the virtual button to establish a Client-Server connection and receive the items list;
@@ -73,7 +73,7 @@ The user of the platform performed these actions\footnote{In this experiment, th
 
 The analysis of platform performance is not the study's primary goal, but it helps to find bottlenecks. 
 
-The following experiments will show that it makes sense to perform rendering tasks on a separate server. Having a common database for all instances of the application will help achieve several users' simultaneous work within the system.
+The following experiment shows that it is viable to perform rendering tasks on a separate server. Having a common database for all instances of the application will help achieve several users' simultaneous work within the system.
 
 The first experiment is the system startup analysis, performed on three devices by registering the startup time (Figure~\ref{fig:SystemStartupScheme-figure}).
 
@@ -103,7 +103,7 @@ The hardware specifications are listed in Table~\ref{tab:hardware-specifications
   \end{threeparttable}
 \end{table}
 
-Each test was performed on a new instance of Unity APP to avoid cashing influence. And then mean values have been calculated (Figure~\ref{fig:SystemInitTime-figure}).
+Each test was performed on a new Unity APP instance to avoid cashing influence. And then mean values have been calculated (Figure~\ref{fig:SystemInitTime-figure}).
 
 \begin{figure}
   \centering
@@ -130,13 +130,13 @@ In the next experiment, event processing time was measured. On one of the device
   \label{fig:EventProcessingTime-figure}
 \end{figure}
 
-As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure}), Oculus Quest's performance on this test is outstanding. The processing time difference is because the NUIX-Studio App runs in an unoptimized state on Windows and macOS \footnote{Unity editor mode}, but can run significantly faster after the App instance is built for the platforms.
+As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure}), Oculus Quest's performance on this test is outstanding. The processing time difference is explained by the fact that the NUIX-Studio App runs in an unoptimized state on Windows and macOS \footnote{Unity editor mode}, but can run significantly faster after the App instance is built for the platforms.
 
-The results of this experiment will be used in the future: system initialization time is time-consuming and is based on the device hardware performance, and in some later experiments, it is better not to perform time calculations that include system initialization, while event processing time is relatively low, and in most cases, it can be ignored.
+The results of this experiment will be used in the future: system initialization time is long is based on the device hardware performance, and in some later experiments, it is better not to perform time calculations that include system initialization, while event processing time is relatively low, and in most cases, it can be ignored.
 
-The following experiment uses a virtual reality headset, a smart light bulb, and a server running an application on it. Suppose that a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup is used in industries to provide a comfortable lighting level while keeping an optimal amount of energy consumption. The light sensor triggers precisely at some sufficiently large value of the lamp brightness. Hence, the most accurate adjustment of the brightness level of the light bulb is needed.
+The following experiment uses a virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup is used in industries to provide a comfortable lighting level while keeping an optimal amount of energy consumption. The light sensor triggers precisely at some sufficiently large value of the lamp brightness. Hence, the most accurate adjustment of the brightness level of the light bulb is needed.
 
-The previous experiment showed that gesture control could be used to control a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary in a specific case. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Suppose that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures to change the brightness of the lamp, such as starting the system, the user had to repeat the step by setting the brightness of the light to the specified value two times. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
+The previous experiment showed that gesture control could be used to control a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary in a specific case. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Supposing that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures to change the brightness of the lamp, such as starting the system, the user had to repeat the step by setting the brightness of the light to the specified value two times. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
 
 
 \begin{equation}
@@ -144,7 +144,7 @@ The previous experiment showed that gesture control could be used to control a l
   \label{eq:totaltime}
 \end{equation}
 
-Two people participated in the two series of the experiment. In the first series, the light's illumination was computed on a Virtual reality headset, and in the second, on a server, periodically calculating the light map. User reaction time $ t_{react} $ is a value independent of the changed synchronization parameters. Therefore, the difference between the calculated time in the first and the second series of the experiment is equal to the difference between the time spent on calibrating the lamp brightness in the first and the second series of the experiment (Equation \eqref{eq:deltatime}).
+Two people participated in the two series of the experiment. In the first series, the light's illumination was computed on a Virtual reality headset, and in the second, on a server that was periodically calculating the light map. User reaction time $ t_{react} $ is a value independent of the changed synchronization parameters. Therefore, the difference in calculated time in the first and the second series of the experiment is equal to the difference in time spent on calibrating the lamp brightness in said experiment (Equation \eqref{eq:deltatime}).
 
 \begin{equation}
   t _{\Delta} = (t_{react} + t_{cal_1}) - (t_{react} + t_{cal_1}) = t_{cal_1} - t_{cal_2}
