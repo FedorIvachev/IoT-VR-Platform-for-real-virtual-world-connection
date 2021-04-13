@@ -1,6 +1,6 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{PROTOTYPE OF THE VR-IOT RESEARCH PLATFORM}
+\chapter{THE VR-IOT RESEARCH PLATFORM}
 
 Before the platform's development, several meetings were held to discuss key implementation details and the architecture of the VR-IoT research platform, or, as it was named later, "NUIX-Studio." At the ( https://vrsimulator.github.io/ TODO: add to the references) the published meeting minutes can be found. 
 
@@ -27,26 +27,18 @@ Firstly, the requirements the platform should follow are:
 \item Fault Tolerance. The platform should effectively handle faults coming from both real and virtual worlds;
 \item Simultaneous work. As in the real world, where several people can interact with an IoT system at the same time, each of the platform's running instances should be able to run simultaneously and operate with the same data.
 \end{enumerate}
-The architecture of the platform is be based on three layers: 
+
+To provide fault tolerance, the platform is based on the three layers (Figure~\ref{fig:BasicPlatformStructure-figure}): 
 \begin{enumerate}
     \item Real-world IoT devices HUB. A special device responsible for receiving and sending data to real-world devices is needed, that provides the data in a unified format (abstraction of sensors).
-    \item Integration layer. Analyzing data coming from VR and real-world, integrating real-world devices data into VR and vice-versa, performing persistence and providing API for using the platform in research projects;
-    \item Visualization layer. Interaction with digital IoT devices can be performed using VR headsets, AR devices, or simulating touch, sight, gestures, and other interactions. The platform provides an API for developers to integrate their interaction techniques into this layer, but developing these techniques is not the focus of this research. 
+    A third-party software openHAB (\cite{OpenHab}) is used with a future upgrade to a standalone solution to support different IoT devices. The HUB runs on a server and is responsible for collecting and storing the IoT devices' data. Managing the data is performed through a Web Interface;
+    \item Integration layer. Responsible for analyzing data coming from VR and real-world, integrating real-world devices data into VR and vice-versa, performing persistence and providing API for using the platform in research projects. By receiving and sending unified data objects representing IoT devices' sensor data using REST API calls, each of the NUIX-Studio App instances operates with the same data, enabling simultaneous work. The next step is to represent IoT devices' data in Virtual reality and perform computations for research. Since the platform should run smoothly on VR headsets and provide good UX, the analysis should be performed on a PC\footnote{In Chapter 4 an experiment proving this statement is provided.}. At the same time, Virtual reality headsets perform computations for interacting with objects, such as hand recognition. 
+    \item Visualization layer. Interaction with digital IoT devices can be performed using VR headsets, AR devices, or simulating touch, sight, gestures, and other interactions. The platform provides an API for developers to integrate their interaction techniques into this layer, but developing these techniques is not the focus of this research. It was decided to use Unity (\cite{Unity}) for interaction with virtual reality devices. Firstly, Unity comes with a ready-to-use 3D engine, relieving the need to develop a new one. Secondly, Unity is multi-platform and supports VR headsets. Thirdly, developers are already familiar with Unity development, making it easier for them to integrate the platform into their solutions.
 \end{enumerate}
-
-\section{Real-world IoT devices HUB}
-A third-party software openHAB is used with a future upgrade to a standalone solution to support different IoT devices. The hub runs on a server and is responsible for collecting and storing the IoT devices' data. Managing the data is performed through a web interface.
-
-\section{Integration layer}
-By receiving and sending unified data objects representing IoT devices' sensor data using REST API calls, each of the NUIX-Studio App instances operates with the same data, enabling simultaneous work.
-The next step is to represent IoT devices' data in virtual reality and perform computations for research. Since the platform should run smoothly on VR headsets and provide good UX, the analysis should be performed on a PC\footnote{In Chapter 4 an experiment proving this statement is provided.}. At the same time, Virtual reality headsets perform computations for interacting with objects, such as hand recognition. 
-
-\section{Visualization layer}
-Since the platform's purpose is to provide an API for research on IoT devices in VR, it was decided to use Unity for interaction with virtual reality devices. Firstly, Unity comes with a ready-to-use 3D engine, relieving the need to develop a new one. Secondly, Unity is multi-platform and supports VR headsets. Thirdly, developers are already familiar with Unity development, making it easier for them to integrate the platform into their solutions.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.6\linewidth]{figures/BasicPlatformStructure.png}
+  \includegraphics[width=0.9\linewidth]{figures/BasicPlatformStructure.png}
   \caption{Simplified structure of NUIX Studio. Real-world IoT devices HUB is an openHAB server, while NUIX-Studio server is an instance of NUIX-Studio APP responsible for the computations.}
   \label{fig:BasicPlatformStructure-figure}
 \end{figure}
@@ -54,8 +46,7 @@ Since the platform's purpose is to provide an API for research on IoT devices in
 \section{Server Architecture}
 \subsection{OpenHAB Server Structure}
 
-
-It was decided not to change the openHAB system's structure since it follows the SOA principles that allow implementing support for various types of devices.
+It was decided not to change the openHAB system's structure since it follows the SOA principles that allow implementing support for various types of devices (Figure~\ref{fig:BasicPlatformStructure-figure}).
 
 Each IoT device is called a Thing, but a Thing can also be a service. For example, a smoke sensor and user location are both Things.
 
@@ -68,7 +59,7 @@ Before adding an IoT device to the server, the developer has to install a softwa
 \begin{figure}
   \centering
   \includegraphics[width=0.9\linewidth]{figures/openHABServerStructure.png}
-  \caption{NUIX-Studio App architecture.}
+  \caption{Server structure}
   \label{fig:openHABServerStructure-figure}
 \end{figure}
 
@@ -92,7 +83,7 @@ Each of these channels represents one item (Figure~\ref{fig:XiaomiLampPowerItem-
   \label{fig:XiaomiLampPowerItem-figure}
 \end{figure}
 
-For example, the Power Control is performed through the power channel. In terms of the introduced concepts, the Power Control is an item named MiLEDSmartBulbWhiteandColorPower of type Switch and State "OFF."
+For example, the Power Control is performed through the power channel. In terms of the introduced concepts, the Power Control is an Item named MiLEDSmartBulbWhiteandColorPower of type Switch and State "OFF."
 
 As soon as the lamp is turned On, the Power Control switch in Web Interface will also turn ON. And if the switch is changed to the "OFF" state in the Web Interface, the lamp will turn off.
 
@@ -163,7 +154,7 @@ When the NUIX-Studio APP requests access to the system to get the list of items 
 But storing the states of the items in the APP by itself does not allow user to interact with the items. In other words, NUIX-Studio App has to provide an interface to interact with the items. Since different types of items require different interaction techniques, for each item type, a widget is created.
 Widget in NUIX-Studio APP is a Unity Virtual GameObject, which can visualize the item state and update it. For example, it can be an interactable pinch slider for a dimmer item or a virtual screen for an image item.
 
-By integrating Extra packages, NUIX-Studio platform can provide a bigger variety of widgets and a higher number of supported devices. For example, Oculus Integration support provides an API for hands recognition; Steam VR (TODO: link) support makes it possible to run the NUIX-Studio APP on the majority of VR headsets.
+By integrating Extra packages, NUIX-Studio platform can provide a bigger variety of widgets and a higher number of supported devices. For example, Oculus Integration support provides an API for hands recognition; SteamVR (\cite{SteamVR2021}) support makes it possible to run the NUIX-Studio APP on the majority of VR headsets.
 
 \begin{figure}
   \centering

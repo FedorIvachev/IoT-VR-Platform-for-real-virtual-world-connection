@@ -6,19 +6,13 @@
 
 The literature review incorporates three sections: research on building an IoT platform without required support of VR, research on interacting with IoT devices in VR and AR, and, at last, research on creating an IoT-VR Platform.
 
-\section{Managing IoT}
+\section{IoT device management}
 
 Many companies already consider it profitable to use IoT in their businesses, but the establishing connection between heterogeneous IoT devices has not been solved yet. The existing frameworks that solve this issue seem to be usually not user-friendly and not easy to use. 
 
-The providers of business IoT integration services state that their solutions can analyze large amounts of data from the connected IoT devices and then turn it into actionable insights (TODO: add to references https://www.softwareag.com). Businesses can then use the insights for lowering energy consumption, analyzing the sensors data, etc.
+The providers of business IoT integration services state that their solutions can analyze large amounts of data from the connected IoT devices and then turn it into actionable insights (\cite{software_ag_software_2020}). Businesses can then use the insights for lowering energy consumption, analyzing the sensors data, etc.
 
-The limitations of the solutions for businesses are:
-\begin{enumerate}
-    \item Price
-    \item No access to the source code
-\end{enumerate}
-
-Even if researchers and companies, who are going to be the users of the VR-IoT platform, can afford to pay a high price for getting the analyzed data, they still will not have access to the source code and access to the data used for training the models. Users will need to pay for the subscription to the services, and it will require additional time and money to switch to another solution.
+Even if researchers can afford to pay a high price for getting the analyzed data, they still will not have access to the source code and access to the data used for training the models. Users will need to pay for the subscription to the services, and it will require additional time and money to switch to another solution.
 
 In \cite{k_mohapatra_solution_2016} it is discussed how the framework for connecting heterogeneous devices should operate the incoming data. In this paper, the requirements for managing IoT are given: the communication protocols, security and access control, and how the data should be analyzed. In section 4 of the paper, a Reference IoT-Architecture model is proposed. Each solution block, such as Data Lake or Event Broker, is briefly introduced, but neither implementation nor tests are provided.
 
@@ -28,7 +22,7 @@ Compared to \cite{k_mohapatra_solution_2016}, in \cite{ahmad_software_2021} auth
 
 In Chapter 1, it was mentioned how building 6G could influence the IoT market. In \cite{guo_enabling_2021} a comprehensive study was done, explaining how 5G limitations for massive IoT can be overcome by using 6G networks. It was explained how machine learning and blockchain could play the primary role in IoT ecosystems. New technologies can be supported, such as holographic communications, which can be easily tested in the VR-IoT Research Platform.
 
-\section{Interacting with IoT devices in VR and AR}
+\section{Interaction with IoT devices in VR and AR}
 
 Augmented reality is used to overlay digital objects onto the objects surrounding us in real life. Extra virtual elements can be attached to real-world devices. The selected research articles' main idea is to create a two-way synchronization between AR/VR and the real world: changes in the virtual world are applied to the real world and vice-versa.
 
@@ -43,7 +37,7 @@ Cities such as Shanghai, New York, Moscow can already be considered smart cities
 
 The research has no novelty if a solution already exists. Fortunately, none of the following articles is focused on creating a platform for creating new IoT devices using VR. Nonetheless, they are still helpful for the VR-IoT platform development.
 
-The next-generation network will influence the IoT market, as stated previously. In \cite{liao_information-centric_2021} authors provide their solution for integrating AR/VR inside 6G massive IoT environment.
+The next-generation network will influence the IoT market, as stated previously. In \cite{liao_information-centric_2021}, authors provide their solution for integrating AR/VR inside 6G massive IoT environment.
 
 As mentioned previously, using VR for IoT research requires building a virtual environment. Nowadays, most VR headsets provide 6 degrees of freedom, which means that it is possible to simultaneously move in the real world and virtual world. In \cite{you_internet_2018} authors research how IoT can be used for seamless virtual reality space created by 360-degree photos and videos.
 
