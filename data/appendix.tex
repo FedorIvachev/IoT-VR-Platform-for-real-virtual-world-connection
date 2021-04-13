@@ -12,11 +12,9 @@ During the development, there were several challenges faced:
     \item Rewriting the code to support new architectures.
 \end{enumerate}
 
-The main repository of the platform is hosted at https://github.com/VRSimulator/NUIX-Studio-Client (TODO: put the link into the references), with the previous prototypes being hosted on other repositories.
+The platform's primary repository is hosted at https://github.com/VRSimulator/NUIX-Studio-Client (TODO: put the link into the references). The source code distribution required keeping the repository size at a minimum while providing an easy installation procedure. NUIX-Studio was shared as a separate package to follow these requirements, possible to integrate into any Unity project.
 
-The distribution of the source code and the NUIX-Studio App demos required keeping the size of the repository at minimum, while providing an easy installation procedure. To follow these requirements, NUIX-Studio was shared as a separate package, possible to integrate into any Unity project.
-
-The first prototypes of the NUIX-Studio platform did not support Virtual reality (Figure~\ref{fig:Prototype2-figure}), and were based on a different architecture (Figure~\ref{fig:Prototype3Structure-figure}).
+The prototypes of the NUIX-Studio platform did not initially support Virtual reality (Figure~\ref{fig:Prototype2-figure}) and were based on a different architecture (Figure~\ref{fig:Prototype3Structure-figure}).
 
 
 \begin{figure}
@@ -33,7 +31,7 @@ The first prototypes of the NUIX-Studio platform did not support Virtual reality
   \label{fig:Prototype3Structure-figure}
 \end{figure}
 
-The difference between the final structure used in NUIX-Studio and the structure in Figure~\ref{fig:Prototype3Structure-figure} is in the way the data is stored on the server. In the previous prototypes the server was responsible not only for storing and synchronizing item parameters, but also for keeping all the Unity-specific functionality in a separate framework. This framework was responsible for building Item representations for virtual reality and sharing them to other NUIX-Studio App instances as Unity Gameobjects. The main limitation of this approach is that Unity Gameobjects have much bigger size compared to the Data transfer objects used in the final prototype.
+The final structure used in NUIX-Studio is different from the structure in Figure~\ref{fig:Prototype3Structure-figure}. In the previous prototypes, the server was responsible for storing and synchronizing item parameters and keeping all the Unity-specific functionality in a separate framework. This framework was used to build Item representations for virtual reality and share them to other NUIX-Studio App instances as Unity objects. This approach's main limitation is that Unity objects have a much bigger size than the Data transfer objects used in the final prototype. These Unity objects were synchronized every frame for the simultaneous work, which dramatically dropped the NUIX-Studio App instances' performance.
 
 \begin{figure}
   \centering
@@ -42,12 +40,12 @@ The difference between the final structure used in NUIX-Studio and the structure
   \label{fig:Prototype3-figure}
 \end{figure}
 
-The third prototype provided only a button Widget (Figure~\ref{fig:Prototype3-figure}), but after integrating Mixed Reality Toolkit in the fourth prototype (Figure~\ref{fig:Prototype4-figure}), other Widgets were added to the platform.
+The third prototype provided only a button Widget (Figure~\ref{fig:Prototype3-figure}), but after integrating Mixed Reality Toolkit in the fourth prototype (Figure~\ref{fig:Prototype4-figure}), additional Widgets were added to the platform.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.6\linewidth]{figures/Prototype4.png}
-  \caption{The fourth prototype of the VR-IoT Research platform. A virtual copy of the real-world smart home environment was used with virtual items added, such as location item, contact item, player item switch item, and dimmer item. Also several Widgets were supported: sight sensor, motor, light widget, pressure sensor, video streaming screens and gesture recognition.}
+  \caption{The fourth prototype of the VR-IoT Research platform. A virtual copy of the real-world Smart home environment was used with virtual items added, such as location, contact, player, switch, and dimmer items. Also several Widgets were supported: sight sensor, motor, light widget, pressure sensor, video streaming screens and gesture recognition.}
   \label{fig:Prototype4-figure}
 \end{figure}
 
