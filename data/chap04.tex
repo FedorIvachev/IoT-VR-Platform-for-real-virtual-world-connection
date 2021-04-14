@@ -53,18 +53,32 @@ The server has been set up for connection to NUIX-Studio App instances.
 
 \section{Running NUIX-Studio App}
 
-After the server has been set up and the Smart home environment has been chosen, the platform App instances are ready to run on the devices.
-
-(A screenshot with gesture control).
-
 In the experiment, a VR-IoT platform user performs three actions:
 \begin{enumerate}
     \item Put on Virtual reality headset;
     \item Press the virtual button to establish a Client-Server connection and receive the items list;
-    \item Perform a "Thumb up" gesture. By rotating the fist, the lamp brightness changes in the VR-IoT environment \footnote{Both in real and virtual worlds}.
+    \item Perform a "Thumb up" gesture. By rotating the fist, the lamp brightness changes in the VR-IoT environment\footnote{Both in real and virtual worlds} (Figure~\ref{fig:FullBrightnessOculus-figure}).
 \end{enumerate}
 
-The user of the platform performed these actions\footnote{In this experiment, the platform developer performed the user role.}. Thus, support for gestures was added to control the lamp's brightness, and the experiment to create a new device for the existing environment can be considered a success.
+
+\begin{figure}
+  \centering
+  \includegraphics[width = 0.9 \linewidth]{figures/FullBrightnessOculus.png}
+  \caption{"Thumb up" gesture.}
+  \label{fig:FullBrightnessOculus-figure}
+\end{figure}
+
+The user of the platform performed these actions\footnote{In this experiment, the platform developer performed the user role.} (Figure~\ref{fig:BrightnessControl-figure}). Thus, support for gestures was added to control the lamp's brightness, and the experiment to create a new device for the existing environment can be considered a success.
+
+\begin{figure}
+  \centering
+  \subcaptionbox{Lamp brightness set to ~75\%\label{fig:HalflBrightness}}
+    {\includegraphics[width=0.45\linewidth]{figures/HalflBrightness.jpg}}
+  \subcaptionbox{Lamp brightness set to 100\%\label{fig:FullBrightness}}
+    {\includegraphics[width=0.45\linewidth]{figures/FullBrightness.jpg}}
+  \caption{Experiment of the lamp brightness control. In both cases the real lamp and the NUIX-Studio App virtual lamps on Local PC and Oculus Quest brightness has the same value.}
+  \label{fig:BrightnessControl-figure}
+\end{figure}
 
 \section{Performance analysis}
 
