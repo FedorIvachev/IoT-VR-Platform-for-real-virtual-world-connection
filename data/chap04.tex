@@ -114,7 +114,7 @@ The hardware specifications are listed in Table~\ref{tab:hardware-specifications
   \end{threeparttable}
 \end{table}
 
-Each test was performed on a new Unity APP instance to avoid cashing influence. And then mean values have been calculated (Figure~\ref{fig:SystemInitTime-figure}).
+Each test was performed on a new Unity APP instance to avoid cashing influence. Then mean values for the tests have been calculated (Figure~\ref{fig:SystemInitTime-figure}).
 
 \begin{figure}
   \centering
@@ -143,11 +143,11 @@ As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure})
   \label{fig:EventProcessingTime-figure}
 \end{figure}
 
-The results of this experiment will be used in the future: system initialization time is long is based on the device hardware performance, and in some later experiments, it is better not to perform time calculations that include system initialization, while event processing time is relatively low, and in most cases, it can be ignored.
+The results of this experiment will be used in the future: system initialization time is based on the device hardware performance, and in some later experiments, it is better not to perform time calculations that include system initialization, while event processing time is relatively low for each device, and in most cases, it can be ignored.
 
-The following experiment uses a virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup is used in industries to provide a comfortable lighting level while keeping an optimal amount of energy consumption. The light sensor triggers precisely at some sufficiently large value of the lamp brightness. Hence, the most accurate adjustment of the brightness level of the light bulb is needed.
+The following experiment uses a Virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup is used in industries to provide a comfortable lighting level while keeping an optimal amount of energy consumption. The light sensor triggers precisely at some sufficiently large value of the lamp brightness. Hence, the most accurate adjustment of the brightness level of the light bulb is needed.
 
-The previous experiment showed that gesture control could be used to control a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary in a specific case. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Supposing that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures to change the brightness of the lamp, such as starting the system, the user had to repeat the step by setting the brightness of the light to the specified value two times. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
+The previous experiment showed that gesture control could be used to control a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary for specific scenarios. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Supposing that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures to change the brightness of the lamp, such as starting the system, the user had to repeat the step by setting the brightness of the light to the specified value twiice. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
 
 
 \begin{equation}
@@ -155,14 +155,14 @@ The previous experiment showed that gesture control could be used to control a l
   \label{eq:totaltime}
 \end{equation}
 
-Two people participated in the two series of the experiment. In the first series, the light's illumination was computed on a Virtual reality headset, and in the second, on a server that was periodically calculating the light map. User reaction time $ t_{react} $ is a value independent of the changed synchronization parameters. Therefore, the difference in calculated time in the first and the second series of the experiment is equal to the difference in time spent on calibrating the lamp brightness in said experiment (Equation \eqref{eq:deltatime}).
+Two people participated in the two series of the experiment. In the first series, the light's illumination was computed on a Virtual reality headset, and in the second, on a server that was periodically calculating the light map. User reaction time $ t_{react} $ is a value independent of the changed synchronization parameters. Therefore, the difference in calculated time in the first and the second series of the experiment is equal to the difference in time spent on calibrating the lamp brightness in the said experiment (Equation \eqref{eq:deltatime}).
 
 \begin{equation}
   t _{\Delta} = (t_{react} + t_{cal_1}) - (t_{react} + t_{cal_1}) = t_{cal_1} - t_{cal_2}
   \label{eq:deltatime}
 \end{equation}
 
-As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it took the participants to perform the task is unstable, but it is still can be seen that on average it took more time to perform the task in the first series than in the second series for both users. In Figure~\ref{fig:DeltaTime-figure} it can be seen that $t_{\Delta}$ is more than zero for the most observations.
+As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it took the participants to perform the task is unstable, but it is still can be seen that on average, it took more time to perform the task in the first series than in the second series for both users. In Figure~\ref{fig:DeltaTime-figure} it can be seen that $t_{\Delta}$ is more than zero for the most observations.
 
 \begin{figure}
   \centering
@@ -179,7 +179,7 @@ As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it too
   \label{fig:DeltaTime-figure}
 \end{figure}
 
-Additional data were also analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
+Additional data were analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
 
 \begin{figure}
   \centering
@@ -205,7 +205,7 @@ Additional data were also analyzed during the experiment, such as the number of 
   \label{fig:Series1FPSpng-figure}
 \end{figure}
 
-Considering that gesture recognition is processed no more than once per frame, it significantly influenced the user experience, resulting in a big $t_{\Delta}$. The frequency of gesture value retrieval can be called polling rate. When a polling rate is 1000Hz, the gesture position is retrieved only once per frame (Table~\ref{tab:polling-rate-table}). Probably, there is a linear dependency on the time spent on performing the test and the polling rate during the test.
+Considering that gesture recognition is processed no more than once per frame, it significantly influenced the user experience, resulting in a big $t_{\Delta}$. The frequency of gesture value retrieval can be called polling rate. When a polling rate is 1000Hz, the gesture position is retrieved once every millisecond(Table~\ref{tab:polling-rate-table}). Probably, there is a linear dependency between the time spent on performing the calibration and the polling rate during the test.
 
 \begin{table}
   \centering
@@ -225,7 +225,7 @@ Considering that gesture recognition is processed no more than once per frame, i
   \end{threeparttable}
 \end{table}
 
-However, the experiment's main challenge was to show how transferring resource-intensive computing from a VR headset to a server improves user experience, significant for the VR-IoT Research platform. Thus, the experiment can be considered successful.\footnote{Please note that this experiment cannot be considered scientifically substantiated since the number of tests and the number of participants is small. In addition, it is impossible to control the external factors that add random error, such as system optimization that affects the stability of the frame rate, room lighting that affects the accuracy of hand recognition, the size of the participants' hands, and the participants' experience with virtual reality systems. As a result, the reproduction of this experiment is almost impossible. Nevertheless, this experiment serves as an example of the requirement to transfer resource-intensive computing from the VR headset to the server.
+However, the experiment's main challenge was to show how transferring resource-intensive computing from a VR headset to a server improves user experience, significant for the VR-IoT Research platform. Thus, the experiment can be considered successful.\footnote{Please note that this experiment cannot be considered scientifically substantiated since the number of tests and the number of participants is relatively small. In addition, it is impossible to control the external factors that add random error, such as system optimization that affects the stability of the frame rate, room lighting that affects the accuracy of hand recognition, the size of the participants' hands, and the participants' experience with virtual reality systems. As a result, the reproduction of this experiment is almost impossible. Nevertheless, this experiment serves as an example of the requirement to transfer resource-intensive computing from the VR headset to the server.
 }
 
 
