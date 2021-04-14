@@ -32,7 +32,7 @@ As a first step, a binding needs to be added to the openHAB server. Xiaomi Mi IO
   \label{fig:ServerSetupProcedure-figure}
 \end{figure}
 
-The next step is adding items linked to the lamp channels. In the example, the lamp brightness dimmer is added to the semantic model.
+The next step is adding items linked to the lamp channels. In the example, the lamp brightness dimmer is added to the semantic model. As seen in Figure~\ref{fig:SemanticModelOne-figure}, the user can move the dimmer to control the lamp's light brightness. The real-world lamp will change the brightness based on the value on the server.
 
 \begin{figure}
   \centering
@@ -40,8 +40,6 @@ The next step is adding items linked to the lamp channels. In the example, the l
   \caption{Semantic model 1.}
   \label{fig:SemanticModelOne-figure}
 \end{figure}
-
-As seen in Figure~\ref{fig:SemanticModelOne-figure}, the user can move the dimmer to control the lamp's light brightness. The real-world lamp will change the brightness based on the value on the server.
 
 The next step is adding item tags for gesture control and for the light visualization (Figure~\ref{fig:ItemEditPage-figure}).
 
@@ -123,14 +121,14 @@ In the next experiment, event processing time was measured. On one of the device
   \label{fig:EventProcessingScheme-figure}
 \end{figure}
 
+As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure}), Oculus Quest's performance on this test is outstanding. The processing time difference is explained by the fact that the NUIX-Studio App runs in an unoptimized state on Windows and macOS\footnote{Unity editor mode}, but can run significantly faster after the App instances are built for the platforms.
+
 \begin{figure}
   \centering
   \includegraphics[width = 0.9 \linewidth]{figures/EventProcessingTime.png}
   \caption{Event processing time measured on different devices, in \textmu{}s}
   \label{fig:EventProcessingTime-figure}
 \end{figure}
-
-As seen on the resulting histogram (Figure~\ref{fig:EventProcessingTime-figure}), Oculus Quest's performance on this test is outstanding. The processing time difference is explained by the fact that the NUIX-Studio App runs in an unoptimized state on Windows and macOS \footnote{Unity editor mode}, but can run significantly faster after the App instance is built for the platforms.
 
 The results of this experiment will be used in the future: system initialization time is long is based on the device hardware performance, and in some later experiments, it is better not to perform time calculations that include system initialization, while event processing time is relatively low, and in most cases, it can be ignored.
 
@@ -151,6 +149,8 @@ Two people participated in the two series of the experiment. In the first series
   \label{eq:deltatime}
 \end{equation}
 
+As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it took the participants to perform the task is unstable, but it is still can be seen that on average it took more time to perform the task in the first series than in the second series for both users. In Figure~\ref{fig:DeltaTime-figure} it can be seen that $t_{\Delta}$ is more than zero for the most observations.
+
 \begin{figure}
   \centering
   \includegraphics[width = 0.9 \linewidth]{figures/ExperimentTime.png}
@@ -158,7 +158,6 @@ Two people participated in the two series of the experiment. In the first series
   \label{fig:ExperimentTime-figure}
 \end{figure}
 
-As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it took the participants to perform the task is unstable, but it is still can be seen that on average it took more time to perform the task in the first series than in the second series for both users. In Figure~\ref{fig:DeltaTime-figure} it can be seen that $t_{\Delta}$ is more than zero for the most observations.
 
 \begin{figure}
   \centering
@@ -166,6 +165,8 @@ As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it too
   \caption{The difference between the time spent on calibrating the lamp brightness in the first and the second series of the experiment, in ms}
   \label{fig:DeltaTime-figure}
 \end{figure}
+
+Additional data were also analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
 
 \begin{figure}
   \centering
@@ -176,9 +177,6 @@ As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it too
   \caption{Screenshots of the experiment.}
   \label{fig:exp-screenshot}
 \end{figure}
-
-Additional data were also analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
-
 
 \begin{figure}
   \centering

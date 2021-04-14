@@ -2,7 +2,7 @@
 
 \chapter{PLATFORM DEVELOPMENT}
 
-During the development, there were several challenges faced:
+Several challenges were faced during the development:
 \begin{enumerate}
     \item Distribution of the source code;
     \item Distribution of the NUIX-Studio App demos;
@@ -12,9 +12,12 @@ During the development, there were several challenges faced:
     \item Rewriting the code to support new architectures.
 \end{enumerate}
 
+\section{Source code distribution}
+
 The platform's source code is hosted at \cite{NUIXStudio} repository. The source code distribution required keeping the repository size at a minimum while providing an easy installation procedure. NUIX-Studio was shared as a separate package to follow these requirements, possible to integrate into any Unity project.
 
-The prototypes of the NUIX-Studio platform did not initially support Virtual reality (Figure~\ref{fig:Prototype2-figure}) and were based on a different architecture (Figure~\ref{fig:Prototype3Structure-figure}).
+
+The prototypes of the NUIX-Studio platform did not initially support Virtual reality (Figure~\ref{fig:Prototype2-figure}).
 
 
 \begin{figure}
@@ -24,6 +27,8 @@ The prototypes of the NUIX-Studio platform did not initially support Virtual rea
   \label{fig:Prototype2-figure}
 \end{figure}
 
+The final structure used in NUIX-Studio is different from the structure in Figure~\ref{fig:Prototype3Structure-figure}. In the previous prototypes, the server was responsible for storing and synchronizing item parameters and keeping all the Unity-specific functionality in a separate framework. This framework was used to build Item representations for Virtual reality and share them to other NUIX-Studio App instances as Unity objects. This approach's main limitation is that Unity objects have a much bigger size than the Data transfer objects used in the final prototype. These Unity objects were synchronized every frame for the simultaneous work, which dramatically dropped the NUIX-Studio App instances' performance.
+
 \begin{figure}
   \centering
   \includegraphics[width=0.9\linewidth]{figures/Prototype3Structure.png}
@@ -31,7 +36,7 @@ The prototypes of the NUIX-Studio platform did not initially support Virtual rea
   \label{fig:Prototype3Structure-figure}
 \end{figure}
 
-The final structure used in NUIX-Studio is different from the structure in Figure~\ref{fig:Prototype3Structure-figure}. In the previous prototypes, the server was responsible for storing and synchronizing item parameters and keeping all the Unity-specific functionality in a separate framework. This framework was used to build Item representations for virtual reality and share them to other NUIX-Studio App instances as Unity objects. This approach's main limitation is that Unity objects have a much bigger size than the Data transfer objects used in the final prototype. These Unity objects were synchronized every frame for the simultaneous work, which dramatically dropped the NUIX-Studio App instances' performance.
+The third prototype provided only a button Widget (Figure~\ref{fig:Prototype3-figure}), but after integrating Mixed Reality Toolkit in the fourth prototype (Figure~\ref{fig:Prototype4-figure}), additional Widgets were added to the platform. 
 
 \begin{figure}
   \centering
@@ -40,8 +45,6 @@ The final structure used in NUIX-Studio is different from the structure in Figur
   \label{fig:Prototype3-figure}
 \end{figure}
 
-The third prototype provided only a button Widget (Figure~\ref{fig:Prototype3-figure}), but after integrating Mixed Reality Toolkit in the fourth prototype (Figure~\ref{fig:Prototype4-figure}), additional Widgets were added to the platform.
-
 \begin{figure}
   \centering
   \includegraphics[width=0.6\linewidth]{figures/Prototype4.png}
@@ -49,7 +52,23 @@ The third prototype provided only a button Widget (Figure~\ref{fig:Prototype3-fi
   \label{fig:Prototype4-figure}
 \end{figure}
 
-In the final prototype (Figure~\ref{fig:FinalPrototype-figure}), code for most of the items was rewritten to support the new architecture. 
+Another important feature added in the fourth prototype was the Input Simulation Service (Figure~\ref{fig:InputSimulation-figure}). Previously, in most of the cases, testing the interaction with Widgets required using Virtual reality Headset. To use the Oculus Quest VR Headset, developers need to prepare their workplace. Firstly, it is necessary that the environment for using the Virtual reality Headset is well lit, otherwise the detection of the position of Virtual reality Headset in the world space will not work correctly. Secondly, a sufficient amount of space around the developer is needed in order to be able to freely move the Virtual reality Headset controllers or hands. Unfortunately, these requirements for setting up the environment are often infeasible. With the help of the Input Simulation Service system, based on the Mixed Reality Toolkit, it became possible not only to move inside the virtual world, but also to make movements with virtual hands, including the various gestures simulation.
+
+
+
+\begin{figure}
+  \centering
+  \subcaptionbox{Pinching gesture simulation\label{fig:InputSimulation-a}}
+    {\includegraphics[width=0.45\linewidth]{figures/InputSimulation1.png}}
+  \subcaptionbox{Pointing Gesture simulation\label{fig:InputSimulation-b}}
+    {\includegraphics[width=0.45\linewidth]{figures/InputSimulation2.png}}
+  \caption{Simulations of gestures on the UNIX-Studio App running on a PC.}
+  \label{fig:InputSimulation-figure}
+\end{figure}
+
+
+In the final prototype (Figure~\ref{fig:FinalPrototype-figure}), code for most of the items was rewritten to support the new architecture, defined in the previous chapters. 
+
 
 \begin{figure}
   \centering
