@@ -2,7 +2,8 @@
 
 \chapter{VR-IOT RESEARCH PLATFORM PERFORMANCE TESTING}
 
-In this chapter, one of the most common IoT environments Smart home is used to create a device of a new type. There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}):
+The evaluation of creating devices and performing simultaneous work in the IoT-VR environment is an important part of this research. This chapter describes several experiments used for testing the NUIX-Studio platform performance.
+There are several devices in the example configuration (Figure~\ref{fig:TestingEquipment-figure}):
 \begin{enumerate}
     \item A Smart Wi-Fi lamp;
     \item A PC running openHAB server and NUIX-Studio App instance;
@@ -18,12 +19,10 @@ In this chapter, one of the most common IoT environments Smart home is used to c
   \label{fig:TestingEquipment-figure}
 \end{figure}
 
-In the following experiments, gesture control functionality is added for the smart lamp\footnote{Smart vacuum cleaner and remote PC will be used in the next experiment}.
-
-Widgets for Light and Gesture Recognition are created in the virtual environment scene. In other words, virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
+In the first experiment, gesture control functionality is added for the smart lamp\footnote{Smart vacuum cleaner and remote PC will be used in the next experiments}. Widgets for Light and Gesture Recognition are created in the virtual environment scene. In other words, virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
 
 \section{Server setup}
-As a first step, a binding needs to be added to the openHAB server. Xiaomi Mi IO binding makes it possible to automatically add the Xiaomi Smart Wi-Fi Lamp to the server (Figure~\ref{fig:ServerSetupProcedure-figure}).
+Same as in the previous chapter, Things representing the Smart Lamp and Vacuum Cleaner are added to the server by using a suitable Binding (Figure~\ref{fig:ServerSetupProcedure-figure}).
 
 \begin{figure}
   \centering
@@ -32,16 +31,16 @@ As a first step, a binding needs to be added to the openHAB server. Xiaomi Mi IO
   \label{fig:ServerSetupProcedure-figure}
 \end{figure}
 
-The next step is adding items linked to the lamp channels. In the example, the lamp brightness dimmer is added to the semantic model. As seen in Figure~\ref{fig:SemanticModelOne-figure}, the user can move the dimmer to control the lamp's light brightness. The real-world lamp will change the brightness based on the value on the server.
+The next step is adding the Items linked to the Things' Channels. In the example, the lamp's brightness dimmer is added to the Semantic model. As seen in Figure~\ref{fig:SemanticModelOne-figure}, the user can move the dimmer to control the lamp's light brightness. The real-world lamp will change the brightness based on the value on the server.
 
 \begin{figure}
   \centering
   \includegraphics[width = 0.9 \linewidth]{figures/SemanticModelOne.png}
-  \caption{Semantic model 1.}
+  \caption{The Semantic model in the first experiment}
   \label{fig:SemanticModelOne-figure}
 \end{figure}
 
-The next step is adding item tags for gesture control and for the light visualization (Figure~\ref{fig:ItemEditPage-figure}).
+The next step is adding Item Tags for the Gesture and Brightness control (Figure~\ref{fig:ItemEditPage-figure}). Tags provide information for the NUIX-Studio App about which Widgets for the Item it needs to create.
 
 \begin{figure}
   \centering
