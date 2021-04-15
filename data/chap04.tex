@@ -19,7 +19,7 @@ There are several devices in the example configuration (Figure~\ref{fig:TestingE
   \label{fig:TestingEquipment-figure}
 \end{figure}
 
-In the first experiment, gesture control functionality is added for the smart lamp\footnote{Smart vacuum cleaner and remote PC will be used in the next experiments}. Widgets for Light and Gesture Recognition are created in the virtual environment scene. In other words, virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
+In the first experiment, gesture control functionality is added for the smart lamp\footnote{Smart vacuum cleaner and remote PC will be used in the next experiments} by creating Widgets for Light and Gesture Recognition in the virtual environment scene. In other words, virtual lamp light is equivalent to the real-world one, and a gesture control interface is implemented.
 
 \section{Server setup}
 Same as in the previous chapter, Things representing the Smart Lamp and Vacuum Cleaner are added to the server by using a suitable Binding (Figure~\ref{fig:ServerSetupProcedure-figure}).
@@ -63,7 +63,7 @@ In the experiment, a VR-IoT platform user performs three actions:
 
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9 \linewidth]{figures/FullBrightnessOculus.png}
+  \includegraphics[width = 0.6 \linewidth]{figures/FullBrightnessOculus.png}
   \caption{"Thumb up" gesture.}
   \label{fig:FullBrightnessOculus-figure}
 \end{figure}
@@ -76,7 +76,7 @@ The user of the platform performed these actions\footnote{In this experiment, th
     {\includegraphics[width=0.45\linewidth]{figures/HalflBrightness.jpg}}
   \subcaptionbox{Lamp brightness set to 100\%\label{fig:FullBrightness}}
     {\includegraphics[width=0.45\linewidth]{figures/FullBrightness.jpg}}
-  \caption{Experiment of the lamp brightness control. In both cases the real lamp and the NUIX-Studio App virtual lamps on Local PC and Oculus Quest brightness has the same value.}
+  \caption{Experiment of the lamp brightness control. In both cases the real lamp and the NUIX-Studio App virtual lamps on Local PC and Oculus Quest brightness have the same value.}
   \label{fig:BrightnessControl-figure}
 \end{figure}
 
@@ -147,7 +147,7 @@ The results of this experiment will be used in the future: system initialization
 
 The following experiment uses a Virtual reality headset, a smart light bulb, and a server running an application on it. For instance, a light sensor is used inside a Smart home environment, located at a relatively large distance from the lamp (2-3 meters), and is triggered when the amount of light falling on its sensor exceeds a certain threshold. For example, this setup is used in industries to provide a comfortable lighting level while keeping an optimal amount of energy consumption. The light sensor triggers precisely at some sufficiently large value of the lamp brightness. Hence, the most accurate adjustment of the brightness level of the light bulb is needed.
 
-The previous experiment showed that gesture control could be used to control a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary for specific scenarios. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Supposing that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures to change the brightness of the lamp, such as starting the system, the user had to repeat the step by setting the brightness of the light to the specified value twiice. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
+The previous experiment showed that gesture control could be used to adjust a lamp's brightness level. This experiment shows that the transfer of computations from the Virtual reality headset to the server is necessary for specific scenarios. The user is asked to perform the same steps as in the previous experiment, with one more step added:  setting the brightness to the specified level. Supposing that the light sensor is triggered at a lamp light brightness level of 50 out of 100 \footnote{Using Fitts' law, it can be assumed that setting up brightness levels to different values takes different time. However, this effect is considered not significant for the experiment.}. The user's task is to set the light brightness to the specified value as quickly as possible using gesture control. In order to omit additional operations not related to the direct use of gestures to change the brightness of the lamp, such as starting the system, the user had to repeat the step by setting the brightness of the light to the specified value twice. The interval between the first and second times, when the lamp brightness is equal to the specified value, can be divided into two components (Equation \eqref{eq:totaltime}): the user reaction time to a successful change in the brightness level $ t_{react} $, and the execution time of the new calibrations $ t_{cal} $.
 
 
 \begin{equation}
@@ -179,7 +179,7 @@ As it can be seen in the Figure~\ref{fig:ExperimentTime-figure}, the time it too
   \label{fig:DeltaTime-figure}
 \end{figure}
 
-Additional data were analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and widgets for items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
+Additional data were analyzed during the experiment, such as the number of frames per second with which the NUIX-Studio App was rendered on the screen (Figure~\ref{fig:exp-screenshot}). Figure~\ref{fig:Series2FPSpng-figure} shows that in the first series of the experiment, the number of frames per second drops significantly as soon as the system is initialized and the Widgets for the Items from the Semantic model are created. In the second series of the experiment, such a drop is no longer observed (Figure~\ref{fig:Series1FPSpng-figure}): because the illumination was computed on a separate device, the number of frames per second drops only slightly \footnote{Probably, because illumination computation is significant for the device's performance, especially its Graphics processing unit.}.
 
 \begin{figure}
   \centering
@@ -205,7 +205,7 @@ Additional data were analyzed during the experiment, such as the number of frame
   \label{fig:Series1FPSpng-figure}
 \end{figure}
 
-Considering that gesture recognition is processed no more than once per frame, it significantly influenced the user experience, resulting in a big $t_{\Delta}$. The frequency of gesture value retrieval can be called polling rate. When a polling rate is 1000Hz, the gesture position is retrieved once every millisecond(Table~\ref{tab:polling-rate-table}). Probably, there is a linear dependency between the time spent on performing the calibration and the polling rate during the test.
+Considering that gesture recognition is processed no more than once per frame, it significantly influenced the user experience, resulting in a big $t_{\Delta}$. The frequency of gesture value retrieval can be called polling rate. When a polling rate is 1000Hz, the gesture position is retrieved once every millisecond (Table~\ref{tab:polling-rate-table}). Probably, there is a linear dependency between the time spent on performing the calibration and the polling rate during the test.
 
 \begin{table}
   \centering
@@ -229,7 +229,7 @@ However, the experiment's main challenge was to show how transferring resource-i
 }
 
 
-In the next experiment, the author proved that it is possible to work together in one VR-IoT environment by adding new IoT devices to the system and changing their parameters:
+In the next experiment, the author demonstrated that it is possible to work together in one VR-IoT environment by adding new IoT devices to the system and changing their parameters:
 \begin{enumerate}
     \item The time for adding a device to the system is limited by the performance of a specific platform and the speed of the Internet connection within the Wi-Fi network. When running 300 sequential ping tests from remote PC to localhost PC, all the values ​​obtained were less than 100ms, with 90 percent values ​​ranging from 45ms to 70ms. The time spent by the device on creating widgets for a smart vacuum cleaner roughly corresponded to the time of system initialization;
     \item Time interval from changing an Item on the remote PC to updating the widgets on localhost PC did not exceed 60ms.

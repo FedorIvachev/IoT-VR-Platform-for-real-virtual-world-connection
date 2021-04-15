@@ -11,7 +11,7 @@ Based on the first meeting discussion, it was decided that the main functionalit
      \item Simulation of device sensors.
 \end{enumerate}
 
-The NUIX-Studio API must provide an API for different interaction techniques and simulation of device sensors inside virtual reality.
+The NUIX-Studio API must provide an interface for different interaction techniques and simulation of device sensors inside Virtual reality.
 
 After several brainstorming sessions, it was proposed to divide device controls into touch interface interaction and other interaction methods, such as voice control, sight control, gesture control, etc. The ability to control devices at a distance impossible to perform in real life, such as lengthening the arms, dropping hands, etc., was allocated to a separate category. These control methods could be used in the real world in the future by introducing new technologies such as holographic projection.
 
@@ -21,7 +21,7 @@ To preserve the narrative structure, the author introduces only the final platfo
 Based on the literature review, the platform should follow these minimum requirements:
 \begin{enumerate}
 \item Scalability. The performance of the platform should stay acceptable when the number of devices in the system increases. Otherwise, the latency of the synchronization between the devices inside VR-IoT environment will increase to a level when the system is unable to perform Data analysis for the research;
-\item Ease of use and testing. Users need to efficiently use the NUIX-Studio API and platform tools to create new IoT devices and test them in the VR-IoT environment.
+\item Ease of use and testing. Researchers need to efficiently use the NUIX-Studio API and platform tools to create new IoT devices and test them in the VR-IoT environment.
 \item Fault Tolerance. The platform should effectively handle faults coming from both real and virtual worlds to provide a valuable user experience;
 \item Simultaneous work. As in the real world, where several people can interact with an IoT system at the same time, each of the platform's running instances should be able to run simultaneously and operate with the same data.
 \end{enumerate}
@@ -163,8 +163,8 @@ As mentioned above, the Semantic model in the NUIX-Studio App is kept equivalent
     \item The Semantic model on the server is time- and memory-effective. Hence, the Semantic model in the App is also time- and memory-effective.
 \end{enumerate}
 
-Overall, using the defined approach, the platform follows the Dependency-inversion principle. In this case, both the Semantic model and Item are abstractions.
+Overall, using the defined approach, the platform doesn't depend on concretions, both the Semantic model and Item are abstractions.
 
-But when it is required to provide an interface for creating new IoT devices in VR and interaction with them, it is not possible to use items presented on the server only. For example, each Item's virtual position inside the VR environment is a required data, which should be accessible by each of the instances.
+But when it is required to provide an interface for creating new IoT devices in VR and interaction with them, it is not possible to use the Items presented on the server only. For example, each Item's virtual position inside the VR environment is a required data, which should be accessible by each of the instances.
 
 The platform's main purpose is to provide an interface to test new IoT devices inside Virtual reality or extend the existing items with extra functionality. But only real-world devices' data is stored on the server. Therefore, the Semantic model should be extended with extra items. 
