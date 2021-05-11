@@ -1699,7 +1699,7 @@
   \thu@titlepage@info@tabular{3.59cm}{5.5em}{0.82cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{学科}{}{\thu@discipline}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
@@ -1709,7 +1709,7 @@
   \thu@titlepage@info@tabular{2.8cm}{2.8cm}{1.34cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
     \thu@info@item{工程领域}{}{\thu@discipline}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
@@ -1718,7 +1718,7 @@
 \newcommand\thu@titlepage@info@master@other{%
   \thu@titlepage@info@tabular{3.28cm}{5em}{1.52cm}{%
     \thu@info@item{培养单位}{}{\thu@department}%
-    \thu@info@item{申请人}{\thu@name@title}{\thu@author}%
+    \thu@info@item{研究生}{\thu@name@title}{\thu@author}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
     \thu@info@item{副指导教师}{\thu@name@title}{\thu@associate@supervisor}%
     \thu@info@item{联合指导教师}{\thu@name@title}{\thu@joint@supervisor}%
